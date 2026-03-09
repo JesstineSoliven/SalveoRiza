@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salveo Barley Grass — Pure Nutrition from Nature</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#2D6A4F', dark: '#1B4332', mint: '#52B788', light: '#D8F3DC', pale: '#F0FAF4' }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ── KEYFRAMES ─────────────────────────────────────── */
+    @keyframes float {
+      0%,100% { transform: translateY(0) rotate(-1deg); }
+      50%      { transform: translateY(-18px) rotate(1deg); }
+    }
+    @keyframes floatSlow {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+    @keyframes bounceScroll {
+      0%,100% { transform: translateY(0); opacity: 1; }
+      50%      { transform: translateY(9px); opacity: 0.45; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(36px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-56px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(56px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes pulseRing {
+      0%   { transform: scale(1); opacity: 0.65; }
+      100% { transform: scale(1.65); opacity: 0; }
+    }
+    @keyframes stickySlideIn {
+      from { opacity: 0; transform: translateX(80px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    /* ── RESET ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; color: #1A1A1A; overflow-x: hidden; background: #fff; }
+    /* ── NAV ───────────────────────────────────────────── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 22px 0;
+      transition: background 0.4s cubic-bezier(0.22,1,0.36,1),
+                  box-shadow 0.4s cubic-bezier(0.22,1,0.36,1),
+                  padding 0.3s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.07), 0 4px 24px rgba(0,0,0,0.06);
+      padding: 14px 0;
+    }
+    /* ── HERO ──────────────────────────────────────────── */
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #D8F3DC; color: #1B4332;
+      padding: 6px 16px; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+      opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s forwards;
+    }
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; color: #1B4332;
+      opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.4s forwards;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem); color: #4B5563; line-height: 1.75;
+      opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.6s forwards;
+    }
+    .hero-btns {
+      opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.8s forwards;
+    }
+    .hero-trust {
+      opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 1.05s forwards;
+    }
+    .hero-product {
+      opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s forwards;
+    }
+    /* Product jar CSS */
+    .jar-wrap { animation: float 5.5s ease-in-out infinite; position: relative; display: inline-block; }
+    .jar {
+      width: 260px; height: 310px;
+      background: linear-gradient(160deg, #2D6A4F 0%, #1B4332 100%);
+      border-radius: 36px 36px 44px 44px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      box-shadow: 0 40px 90px rgba(27,67,50,0.35), 0 8px 32px rgba(0,0,0,0.15),
+                  inset 0 1px 0 rgba(255,255,255,0.12);
+      position: relative; overflow: hidden;
+    }
+    .jar::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 54px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.1), transparent);
+      border-radius: 36px 36px 0 0;
+    }
+    .jar::after {
+      content: ''; position: absolute;
+      top: -40%; left: -20%; width: 60%; height: 80%;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+    }
+    .jar-lid {
+      position: absolute; top: 0; left: 0; right: 0; height: 44px;
+      background: linear-gradient(135deg, #52B788, #2D6A4F);
+      border-radius: 36px 36px 0 0;
+    }
+    .jar-content { position: relative; z-index: 1; text-align: center; padding: 0 20px; }
+    .jar-leaf { font-size: 2.75rem; display: block; margin-bottom: 8px; }
+    .jar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700; color: #fff; letter-spacing: 0.1em;
+    }
+    .jar-name {
+      font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.65);
+      letter-spacing: 0.14em; text-transform: uppercase; margin-top: 2px;
+    }
+    .jar-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.2); margin: 10px auto; }
+    .jar-cert {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 100px; padding: 4px 12px;
+      font-size: 0.65rem; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 0.06em;
+    }
+    /* Floating labels */
+    .fl {
+      position: absolute; background: #fff; border-radius: 12px;
+      padding: 10px 14px; box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+      font-size: 0.78rem; font-weight: 600; color: #1B4332;
+      white-space: nowrap; display: flex; align-items: center; gap: 6px;
+    }
+    .fl::before { content: ''; width: 8px; height: 8px; background: #52B788; border-radius: 50%; flex-shrink: 0; }
+    .fl-1 { top: 20px; right: -140px; animation: floatSlow 3s ease-in-out 0.4s infinite; }
+    .fl-2 { bottom: 70px; left: -140px; animation: floatSlow 3.6s ease-in-out 0.9s infinite; }
+    .fl-3 { bottom: 10px; right: -130px; animation: floatSlow 4.2s ease-in-out 1.4s infinite; }
+    /* Scroll indicator */
+    .scroll-ind {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      opacity: 0; animation: fadeUp 1s cubic-bezier(0.22,1,0.36,1) 1.3s forwards;
+    }
+    /* ── BUTTONS ───────────────────────────────────────── */
+    .btn-shopee {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: #EE4D2D; color: #fff;
+      padding: 15px 28px; border-radius: 100px;
+      font-size: 1rem; font-weight: 700; text-decoration: none;
+      box-shadow: 0 4px 18px rgba(238,77,45,0.38);
+      transition: background 0.2s ease,
+                  transform 0.2s cubic-bezier(0.22,1,0.36,1),
+                  box-shadow 0.2s ease;
+    }
+    .btn-shopee:hover { background: #d43e21; transform: translateY(-2px); box-shadow: 0 8px 26px rgba(238,77,45,0.48); }
+    .btn-shopee:active { transform: translateY(0); }
+    .btn-fb {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: #1877F2; color: #fff;
+      padding: 15px 28px; border-radius: 100px;
+      font-size: 1rem; font-weight: 700; text-decoration: none;
+      box-shadow: 0 4px 18px rgba(24,119,242,0.38);
+      transition: background 0.2s ease,
+                  transform 0.2s cubic-bezier(0.22,1,0.36,1),
+                  box-shadow 0.2s ease;
+    }
+    .btn-fb:hover { background: #0d6efd; transform: translateY(-2px); box-shadow: 0 8px 26px rgba(24,119,242,0.48); }
+    .btn-fb:active { transform: translateY(0); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: transparent; color: #2D6A4F;
+      padding: 15px 28px; border-radius: 100px;
+      font-size: 1rem; font-weight: 600; text-decoration: none;
+      border: 2px solid #2D6A4F;
+      transition: background 0.2s ease, color 0.2s ease,
+                  transform 0.2s cubic-bezier(0.22,1,0.36,1);
+    }
+    .btn-outline:hover { background: #2D6A4F; color: #fff; transform: translateY(-2px); }
+    .btn-outline:active { transform: translateY(0); }
+    /* ── SECTION LABELS ────────────────────────────────── */
+    .sec-label {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.13em; text-transform: uppercase; color: #52B788; margin-bottom: 10px;
+    }
+    .sec-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+      line-height: 1.14; letter-spacing: -0.025em; color: #1B4332;
+    }
+    /* ── REVEAL SECTION ────────────────────────────────── */
+    #reveal { position: relative; }
+    #revealSticky {
+      position: sticky; top: 0; height: 100vh;
+      display: flex; align-items: center; overflow: hidden;
+    }
+    #revealBg { position: absolute; inset: 0; background: #fff; transition: background 0.1s linear; }
+    /* ── BENEFIT CARDS ─────────────────────────────────── */
+    .ben-card {
+      opacity: 0; transform: translateX(-56px);
+      transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.75s cubic-bezier(0.22,1,0.36,1);
+    }
+    .ben-card.from-r { transform: translateX(56px); }
+    .ben-card.go { opacity: 1 !important; transform: translateX(0) !important; }
+    /* ── INGREDIENT CARDS ──────────────────────────────── */
+    .ing-card {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+    .ing-card.go { opacity: 1 !important; transform: translateY(0) !important; }
+    /* ── TESTIMONIAL CARDS ─────────────────────────────── */
+    .test-card {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+    .test-card.go { opacity: 1 !important; transform: translateY(0) !important; }
+    /* ── STAT ITEMS ────────────────────────────────────── */
+    .stat-item {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.55s cubic-bezier(0.22,1,0.36,1);
+    }
+    .stat-item.go { opacity: 1 !important; transform: translateY(0) !important; }
+    /* ── PARALLAX ──────────────────────────────────────── */
+    .para-bg {
+      position: absolute; inset: -20%; z-index: 0;
+      background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&q=80&fit=crop') center/cover no-repeat;
+    }
+    .para-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(135deg, rgba(27,67,50,0.88), rgba(45,106,79,0.8));
+    }
+    /* ── STICKY BUY ────────────────────────────────────── */
+    #stickyBuy {
+      position: fixed; bottom: 96px; right: 24px; z-index: 90;
+      opacity: 0; transform: translateX(72px); pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+    #stickyBuy.show { opacity: 1; transform: translateX(0); pointer-events: all; }
+    #stickyBuy a {
+      display: flex; align-items: center; gap: 8px;
+      background: #EE4D2D; color: #fff;
+      padding: 13px 22px; border-radius: 100px;
+      font-size: 0.9rem; font-weight: 700; text-decoration: none;
+      box-shadow: 0 6px 22px rgba(238,77,45,0.45);
+      transition: transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s ease;
+    }
+    #stickyBuy a:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 10px 30px rgba(238,77,45,0.55); }
+    /* ── FLOATING MESSENGER ────────────────────────────── */
+    #messenger { position: fixed; bottom: 24px; right: 24px; z-index: 90; }
+    #messenger a {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      width: 60px; height: 60px; background: #1877F2; border-radius: 50%;
+      text-decoration: none; box-shadow: 0 6px 22px rgba(24,119,242,0.45);
+      transition: transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s ease;
+    }
+    #messenger a:hover { transform: scale(1.1); box-shadow: 0 10px 30px rgba(24,119,242,0.55); }
+    .msg-pulse {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 2px solid #1877F2;
+      animation: pulseRing 2.2s cubic-bezier(0.4,0,0.6,1) infinite;
+    }
+    /* ── MOBILE MENU ───────────────────────────────────── */
+    #mobileMenu {
+      display: none; position: fixed; inset: 0; background: #fff; z-index: 99;
+      flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+    }
+    #mobileMenu.open { display: flex; }
+    #mobileMenu a { font-family: 'Playfair Display', serif; font-size: 2.25rem; font-weight: 700; color: #1B4332; text-decoration: none; }
+    /* ── RESPONSIVE ────────────────────────────────────── */
+    .nav-links { display: flex; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #1B4332; border-radius: 2px; }
+    @media (max-width: 1023px) {
+      .fl { display: none; }
+      .jar { width: 220px; height: 265px; }
+    }
+    @media (max-width: 767px) {
+      .nav-links { display: none; }
+      .nav-cta-desk { display: none !important; }
+      .hamburger { display: flex; }
+      #hero-grid { grid-template-columns: 1fr !important; }
+      .hero-product { display: none; }
+      .ben-grid { grid-template-columns: 1fr !important; }
+      .ben-card { transform: translateY(32px) !important; }
+      .ben-card.go { transform: translateY(0) !important; }
+      .ing-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .test-grid { grid-template-columns: 1fr !important; }
+      .dist-grid { grid-template-columns: 1fr !important; text-align: center; }
+      .dist-btns { flex-direction: column !important; }
+      .dist-btns a { justify-content: center; }
+      .foot-grid { grid-template-columns: 1fr !important; }
+      #reveal .rev-right { display: none; }
+      .sec-h2 { font-size: 1.75rem !important; }
+    }
+    @media (max-width: 479px) {
+      .ing-grid { grid-template-columns: 1fr !important; }
+      .hero-h1 { font-size: 2.2rem !important; }
+      .hero-btns { flex-direction: column !important; }
+      .hero-btns a { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MOBILE MENU
+═══════════════════════════════════════════════════════════ -->
+<div id="mobileMenu">
+  <button onclick="closeMob()" style="position:absolute;top:20px;right:20px;background:none;border:none;font-size:1.75rem;cursor:pointer;color:#1B4332;line-height:1;">✕</button>
+  <a href="#benefits" onclick="closeMob()">Benefits</a>
+  <a href="#ingredients" onclick="closeMob()">Ingredients</a>
+  <a href="#order" onclick="closeMob()">Order</a>
+  <a href="#distributor" onclick="closeMob()">Contact</a>
+  <a href="#" class="btn-shopee" style="font-size:0.95rem;padding:14px 30px;">Buy on Shopee</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div style="max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;">
+    <a href="#" style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:#2D6A4F;text-decoration:none;letter-spacing:-0.02em;">Salveo<span style="color:#52B788;">.</span></a>
+    <div class="nav-links" style="align-items:center;gap:32px;">
+      <a href="#benefits" style="font-size:0.875rem;font-weight:500;color:#374151;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#2D6A4F'" onmouseout="this.style.color='#374151'">Benefits</a>
+      <a href="#ingredients" style="font-size:0.875rem;font-weight:500;color:#374151;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#2D6A4F'" onmouseout="this.style.color='#374151'">Ingredients</a>
+      <a href="#order" style="font-size:0.875rem;font-weight:500;color:#374151;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#2D6A4F'" onmouseout="this.style.color='#374151'">Order</a>
+      <a href="#distributor" style="font-size:0.875rem;font-weight:500;color:#374151;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#2D6A4F'" onmouseout="this.style.color='#374151'">Contact</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <a href="#" class="btn-shopee nav-cta-desk" style="padding:10px 22px;font-size:0.875rem;box-shadow:0 2px 10px rgba(238,77,45,0.3);">Buy on Shopee</a>
+      <div class="hamburger" onclick="openMob()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 1 — HERO
+═══════════════════════════════════════════════════════════ -->
+<section id="hero" style="position:relative;min-height:100vh;display:flex;align-items:center;">
+  <!-- BG -->
+  <div id="heroBg" style="position:absolute;inset:0;z-index:0;overflow:hidden;transform:scale(1.06);
+    background:url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=1920&q=85&fit=crop') center/cover no-repeat,
+               linear-gradient(135deg,#D8F3DC 0%,#B7E4C7 100%);">
+    <div style="position:absolute;inset:0;background:linear-gradient(110deg,rgba(255,255,255,0.88) 0%,rgba(255,255,255,0.65) 38%,rgba(255,255,255,0.05) 68%,rgba(27,67,50,0.18) 100%);"></div>
+  </div>
+
+  <!-- Content -->
+  <div id="hero-grid" style="position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:100px 28px 60px;width:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;min-height:100vh;">
+
+    <!-- LEFT: Text -->
+    <div>
+      <div class="hero-badge" style="margin-bottom:24px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Australia's #1 Organic Barley Grass
+      </div>
+      <h1 class="hero-h1" style="margin-bottom:22px;">
+        Pure <em style="font-style:italic;color:#2D6A4F;">Nutrition</em><br>from Nature
+      </h1>
+      <p class="hero-sub" style="max-width:460px;margin-bottom:38px;">
+        Experience the power of Salveo Barley Grass for daily wellness — 100% pure, NASAA-certified organic from pristine Australian farms.
+      </p>
+      <div class="hero-btns" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;">
+        <a href="#" class="btn-shopee">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Buy on Shopee
+        </a>
+        <a href="#benefits" class="btn-outline">
+          Discover Benefits
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <!-- Trust row -->
+      <div class="hero-trust" style="display:flex;gap:28px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:7px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#52B788"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span style="font-size:0.8rem;font-weight:600;color:#374151;">NASAA Certified</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:7px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#52B788"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" fill="none" stroke="white" stroke-width="2"/></svg>
+          <span style="font-size:0.8rem;font-weight:600;color:#374151;">11+ Years</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:7px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#52B788"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <span style="font-size:0.8rem;font-weight:600;color:#374151;">1M+ Packs Sold</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Product visual -->
+    <div class="hero-product" style="display:flex;justify-content:center;align-items:center;">
+      <div class="jar-wrap">
+        <!-- Glow -->
+        <div style="position:absolute;inset:-60px;background:radial-gradient(circle,rgba(82,183,136,0.22) 0%,transparent 65%);pointer-events:none;z-index:0;"></div>
+        <!-- Floating labels -->
+        <div class="fl fl-1">300+ Enzymes</div>
+        <div class="fl fl-2">20 Amino Acids</div>
+        <div class="fl fl-3">HALAL Certified</div>
+        <!-- Jar -->
+        <div class="jar">
+          <div class="jar-lid"></div>
+          <div class="jar-content" style="margin-top:44px;">
+            <span class="jar-leaf">🌿</span>
+            <div class="jar-brand">SALVEO</div>
+            <div class="jar-name">Barley Grass</div>
+            <div class="jar-divider"></div>
+            <div class="jar-cert">100% Organic · NASAA · HALAL</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-ind">
+    <span style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9CA3AF;">Scroll</span>
+    <svg style="animation:bounceScroll 1.6s ease-in-out infinite;" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 2 — PRODUCT REVEAL (PINNED SCROLL)
+═══════════════════════════════════════════════════════════ -->
+<section id="reveal" style="height:240vh;">
+  <div id="revealSticky">
+    <div id="revealBg"></div>
+
+    <!-- Central product (scales via GSAP) -->
+    <div id="revealProduct" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(0.6);z-index:1;opacity:0.3;">
+      <div style="width:180px;height:220px;background:linear-gradient(160deg,#2D6A4F,#1B4332);border-radius:26px 26px 34px 34px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:0 32px 80px rgba(27,67,50,0.3),0 6px 24px rgba(0,0,0,0.12);">
+        <span style="font-size:2.2rem;">🌿</span>
+        <div style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#fff;letter-spacing:0.1em;">SALVEO</div>
+        <div style="font-size:0.6rem;color:rgba(255,255,255,0.55);letter-spacing:0.12em;text-transform:uppercase;">Barley Grass</div>
+      </div>
+    </div>
+
+    <!-- Right panel text -->
+    <div class="rev-right" style="position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:0 28px;display:flex;justify-content:flex-end;pointer-events:none;">
+      <div style="max-width:420px;pointer-events:all;">
+
+        <div id="rp1" style="opacity:0;transform:translateY(28px);transition:opacity 0.6s ease,transform 0.6s ease;">
+          <span class="sec-label">What It Is</span>
+          <h2 class="sec-h2" style="font-size:clamp(1.5rem,2.5vw,2.1rem);margin-bottom:14px;">100% Pure Australian<br>Barley Grass</h2>
+          <p style="color:#4B5563;line-height:1.75;font-size:0.95rem;">Grown in the pristine farmlands of Swan Hill, Victoria, Australia. Special low-temperature drying preserves every enzyme, vitamin, and mineral in its natural bioavailable form.</p>
+        </div>
+
+        <div id="rp2" style="margin-top:32px;opacity:0;transform:translateY(28px);transition:opacity 0.6s ease,transform 0.6s ease;">
+          <span class="sec-label">Why It Works</span>
+          <h2 class="sec-h2" style="font-size:clamp(1.5rem,2.5vw,2.1rem);margin-bottom:14px;">Nature's Most Nutrient-Dense Superfood</h2>
+          <p style="color:#4B5563;line-height:1.75;font-size:0.95rem;">300+ enzymes, 20 amino acids, vitamins A through K, and powerful antioxidants that support your body's natural healing, detox, and cellular regeneration.</p>
+        </div>
+
+        <div id="rp3" style="margin-top:32px;opacity:0;transform:translateY(28px);transition:opacity 0.6s ease,transform 0.6s ease;">
+          <span class="sec-label">Trusted Results</span>
+          <h2 class="sec-h2" style="font-size:clamp(1.5rem,2.5vw,2.1rem);margin-bottom:14px;">Over 1 Million Families<br>Trust Salveo</h2>
+          <p style="color:#4B5563;line-height:1.75;font-size:0.95rem;margin-bottom:18px;">11+ years in the wellness industry and over 1 million packs sold in the Philippines, earning the Asia-Pacific Best Organic Supplement award in 2015.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">FDA Approved</span>
+            <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">HALAL Certified</span>
+            <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">NASAA Organic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 3 — HEALTH BENEFITS
+═══════════════════════════════════════════════════════════ -->
+<section id="benefits" style="padding:100px 28px;background:#fff;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:72px;">
+      <span class="sec-label">Health Benefits</span>
+      <h2 class="sec-h2">Why People Love<br>Salveo Barley Grass</h2>
+      <p style="margin-top:16px;color:#6B7280;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.75;">From immune support to daily energy, comprehensive wellness backed by the power of whole-food nutrition.</p>
+    </div>
+
+    <!-- Benefit 1 -->
+    <div class="ben-card ben-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:80px;" id="ben1">
+      <div style="background:#F0FAF4;border-radius:24px;overflow:hidden;aspect-ratio:4/3;">
+        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&q=80&fit=crop" alt="Immune health" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#D8F3DC,#B7E4C7)'">
+      </div>
+      <div>
+        <div style="width:52px;height:52px;background:#D8F3DC;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:#1B4332;margin-bottom:12px;">Immune System Support</h3>
+        <p style="color:#4B5563;line-height:1.75;margin-bottom:20px;">Rich in vitamins A and C with powerful antioxidant properties, Salveo strengthens your body's defenses against viral and bacterial threats. SOD enzymes actively protect cells from oxidative damage.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">Vitamins A & C</span>
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">SOD Enzymes</span>
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">Antioxidants</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benefit 2 -->
+    <div class="ben-card from-r ben-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:80px;" id="ben2">
+      <div>
+        <div style="width:52px;height:52px;background:#D8F3DC;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:#1B4332;margin-bottom:12px;">Rich in Antioxidants</h3>
+        <p style="color:#4B5563;line-height:1.75;margin-bottom:20px;">Packed with polyphenols, flavonoids, chlorophyll, and beta-carotene that neutralize free radicals, slow aging, and protect against chronic disease. One of nature's highest antioxidant concentrations.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">Flavonoids</span>
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">Chlorophyll</span>
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">Beta-Carotene</span>
+        </div>
+      </div>
+      <div style="background:#F0FAF4;border-radius:24px;overflow:hidden;aspect-ratio:4/3;">
+        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&q=80&fit=crop" alt="Antioxidants greens" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </div>
+
+    <!-- Benefit 3 -->
+    <div class="ben-card ben-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:80px;" id="ben3">
+      <div style="background:#F0FAF4;border-radius:24px;overflow:hidden;aspect-ratio:4/3;">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80&fit=crop" alt="Natural detox" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div>
+        <div style="width:52px;height:52px;background:#D8F3DC;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2"><path d="M12 22a7 7 0 007-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 007 7z"/></svg>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:#1B4332;margin-bottom:12px;">Natural Detox Support</h3>
+        <p style="color:#4B5563;line-height:1.75;margin-bottom:20px;">High chlorophyll content acts as a natural cleanser, helping to detoxify the gut and liver. Reduces inflammation associated with arthritis, gout, and asthma while supporting the body's natural healing capacity.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">Gut Cleanse</span>
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">Anti-Inflammatory</span>
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">Liver Support</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benefit 4 -->
+    <div class="ben-card from-r ben-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:80px;" id="ben4">
+      <div>
+        <div style="width:52px;height:52px;background:#D8F3DC;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:#1B4332;margin-bottom:12px;">Vitamins & Minerals</h3>
+        <p style="color:#4B5563;line-height:1.75;margin-bottom:20px;">A complete spectrum — vitamins A, B1, B2, B3, B6, B12, C, E, and K plus calcium, iron, magnesium, potassium, zinc and 50+ trace elements. Complete nutrition in every single serving.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">9 Vitamins</span>
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">50+ Minerals</span>
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">Complete Nutrition</span>
+        </div>
+      </div>
+      <div style="background:#F0FAF4;border-radius:24px;overflow:hidden;aspect-ratio:4/3;">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80&fit=crop" alt="Vitamins minerals food" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </div>
+
+    <!-- Benefit 5 -->
+    <div class="ben-card ben-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;" id="ben5">
+      <div style="background:#F0FAF4;border-radius:24px;overflow:hidden;aspect-ratio:4/3;">
+        <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=800&q=80&fit=crop" alt="Energy vitality" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div>
+        <div style="width:52px;height:52px;background:#D8F3DC;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:#1B4332;margin-bottom:12px;">Energy & Vitality</h3>
+        <p style="color:#4B5563;line-height:1.75;margin-bottom:20px;">Perfect for busy lifestyles — Salveo supports sustained energy without caffeine, improves mental clarity and focus, and enhances overall vitality so you can perform at your best every single day.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">Sustained Energy</span>
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">Mental Clarity</span>
+          <span style="background:#D8F3DC;color:#1B4332;padding:5px 13px;border-radius:100px;font-size:0.78rem;font-weight:600;">No Caffeine</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 4 — NATURAL INGREDIENTS
+═══════════════════════════════════════════════════════════ -->
+<section id="ingredients" style="padding:100px 28px;background:#D8F3DC;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:60px;">
+      <span class="sec-label">What's Inside</span>
+      <h2 class="sec-h2">Nature Packed into<br>Every Serving</h2>
+      <p style="margin-top:16px;color:#2D6A4F;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.75;">No fillers. No preservatives. No added sugar. Just 100% pure barley grass powder brimming with the nutrients your body craves.</p>
+    </div>
+
+    <div class="ing-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:40px;">
+
+      <div class="ing-card" style="background:#fff;border-radius:20px;padding:28px;box-shadow:0 4px 20px rgba(45,106,79,0.07);">
+        <div style="font-size:2.25rem;margin-bottom:14px;">🌾</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#1B4332;margin-bottom:8px;">Pure Barley Grass Powder</h4>
+        <p style="color:#6B7280;font-size:0.875rem;line-height:1.65;">100% whole leaf powder from pollution-free Australian farms. No additives, preservatives, or fillers of any kind.</p>
+      </div>
+
+      <div class="ing-card" style="background:#fff;border-radius:20px;padding:28px;box-shadow:0 4px 20px rgba(45,106,79,0.07);">
+        <div style="font-size:2.25rem;margin-bottom:14px;">⚡</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#1B4332;margin-bottom:8px;">300+ Active Enzymes</h4>
+        <p style="color:#6B7280;font-size:0.875rem;line-height:1.65;">Including Superoxide Dismutase (SOD) and Protease — powerful enzymes that fight toxins and protect your cells at the molecular level.</p>
+      </div>
+
+      <div class="ing-card" style="background:#fff;border-radius:20px;padding:28px;box-shadow:0 4px 20px rgba(45,106,79,0.07);">
+        <div style="font-size:2.25rem;margin-bottom:14px;">🧬</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#1B4332;margin-bottom:8px;">20 Essential Amino Acids</h4>
+        <p style="color:#6B7280;font-size:0.875rem;line-height:1.65;">A complete amino acid profile including all 8 essential amino acids your body cannot produce on its own for muscle, repair, and immunity.</p>
+      </div>
+
+      <div class="ing-card" style="background:#fff;border-radius:20px;padding:28px;box-shadow:0 4px 20px rgba(45,106,79,0.07);">
+        <div style="font-size:2.25rem;margin-bottom:14px;">☀️</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#1B4332;margin-bottom:8px;">Vitamins A, B, C, E, K</h4>
+        <p style="color:#6B7280;font-size:0.875rem;line-height:1.65;">A full vitamin complex including B1, B2, B3, B6, and B12 for energy metabolism, immune function, and long-term cellular health.</p>
+      </div>
+
+      <div class="ing-card" style="background:#fff;border-radius:20px;padding:28px;box-shadow:0 4px 20px rgba(45,106,79,0.07);">
+        <div style="font-size:2.25rem;margin-bottom:14px;">🪨</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#1B4332;margin-bottom:8px;">50+ Essential Minerals</h4>
+        <p style="color:#6B7280;font-size:0.875rem;line-height:1.65;">Calcium, iron, potassium, magnesium, zinc, selenium, and 50+ trace elements for comprehensive, daily mineral nutrition.</p>
+      </div>
+
+      <div class="ing-card" style="background:#fff;border-radius:20px;padding:28px;box-shadow:0 4px 20px rgba(45,106,79,0.07);">
+        <div style="font-size:2.25rem;margin-bottom:14px;">🍃</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#1B4332;margin-bottom:8px;">Chlorophyll & Phytonutrients</h4>
+        <p style="color:#6B7280;font-size:0.875rem;line-height:1.65;">High chlorophyll supports detoxification and tissue repair. Rich in flavonoids and polyphenols for powerful antioxidant protection.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;background:rgba(255,255,255,0.55);border-radius:14px;padding:22px 28px;backdrop-filter:blur(6px);">
+      <p style="font-size:0.875rem;color:#2D6A4F;font-weight:600;letter-spacing:0.01em;">
+        ✓ No preservatives &nbsp;·&nbsp; ✓ No artificial colors &nbsp;·&nbsp; ✓ No added sugar &nbsp;·&nbsp; ✓ Non-GMO &nbsp;·&nbsp; ✓ Gluten-free
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 5 — PRODUCT EXPERIENCE (PARALLAX)
+═══════════════════════════════════════════════════════════ -->
+<section id="order" style="position:relative;padding:130px 28px;overflow:hidden;">
+  <div class="para-bg" id="paraBg"></div>
+  <div class="para-overlay"></div>
+
+  <div style="position:relative;z-index:2;max-width:1100px;margin:0 auto;text-align:center;">
+    <span style="display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#52B788;margin-bottom:14px;">Daily Ritual</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.12;letter-spacing:-0.025em;color:#fff;margin-bottom:22px;">
+      Make It Part of<br><em style="font-style:italic;color:#B7E4C7;">Your Daily Ritual</em>
+    </h2>
+    <p style="color:rgba(255,255,255,0.8);max-width:540px;margin:0 auto 56px;line-height:1.75;font-size:1.05rem;">
+      Just one serving a day is all it takes. Mix with water or your favorite juice and give your body the complete nutrition it deserves — every single morning.
+    </p>
+
+    <!-- Glassmorphism product card -->
+    <div style="display:inline-block;margin-bottom:68px;cursor:default;transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);" onmouseover="this.style.transform='rotateY(10deg) translateY(-10px) scale(1.04)'" onmouseout="this.style.transform='rotateY(0) translateY(0) scale(1)'">
+      <div style="width:150px;height:190px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);border-radius:22px 22px 28px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(20px);box-shadow:0 32px 64px rgba(0,0,0,0.28),inset 0 1px 0 rgba(255,255,255,0.18);">
+        <span style="font-size:1.9rem;">🌿</span>
+        <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#fff;margin-top:8px;letter-spacing:0.08em;">SALVEO</div>
+        <div style="font-size:0.58rem;color:rgba(255,255,255,0.55);margin-top:3px;letter-spacing:0.11em;">BARLEY GRASS</div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:640px;margin:0 auto;">
+      <div class="stat-item">
+        <div style="font-family:'Playfair Display',serif;font-size:2.75rem;font-weight:700;color:#fff;line-height:1;">1M+</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.65);margin-top:6px;">Packs Sold</div>
+      </div>
+      <div class="stat-item">
+        <div style="font-family:'Playfair Display',serif;font-size:2.75rem;font-weight:700;color:#fff;line-height:1;">11+</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.65);margin-top:6px;">Years of Wellness</div>
+      </div>
+      <div class="stat-item">
+        <div style="font-family:'Playfair Display',serif;font-size:2.75rem;font-weight:700;color:#fff;line-height:1;">#1</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.65);margin-top:6px;">Organic Barley in PH</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 6 — TESTIMONIALS
+═══════════════════════════════════════════════════════════ -->
+<section style="padding:100px 28px;background:#fff;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:60px;">
+      <span class="sec-label">Real Stories</span>
+      <h2 class="sec-h2">What Our Community Says</h2>
+    </div>
+    <div class="test-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;">
+
+      <div class="test-card" style="background:#F9FAFB;border-radius:20px;padding:30px;border:1px solid #F0FAF4;">
+        <div style="display:flex;gap:3px;margin-bottom:18px;font-size:1rem;">⭐⭐⭐⭐⭐</div>
+        <p style="color:#374151;line-height:1.75;margin-bottom:22px;font-style:italic;font-size:0.95rem;">"I've been taking Salveo for 6 months and my energy levels have completely transformed. I no longer need coffee in the morning — I feel naturally energized all day!"</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;background:linear-gradient(135deg,#2D6A4F,#52B788);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">MA</div>
+          <div>
+            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Maria Alcantara</div>
+            <div style="font-size:0.78rem;color:#9CA3AF;">Verified Buyer · Manila</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card" style="background:#F9FAFB;border-radius:20px;padding:30px;border:1px solid #F0FAF4;">
+        <div style="display:flex;gap:3px;margin-bottom:18px;font-size:1rem;">⭐⭐⭐⭐⭐</div>
+        <p style="color:#374151;line-height:1.75;margin-bottom:22px;font-style:italic;font-size:0.95rem;">"My blood pressure and cholesterol have improved significantly since I started Salveo. My doctor was impressed. This has become non-negotiable in my daily routine."</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;background:linear-gradient(135deg,#1B4332,#2D6A4F);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">RD</div>
+          <div>
+            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Roberto Dela Cruz</div>
+            <div style="font-size:0.78rem;color:#9CA3AF;">Verified Buyer · Cebu</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card" style="background:#F9FAFB;border-radius:20px;padding:30px;border:1px solid #F0FAF4;">
+        <div style="display:flex;gap:3px;margin-bottom:18px;font-size:1rem;">⭐⭐⭐⭐⭐</div>
+        <p style="color:#374151;line-height:1.75;margin-bottom:22px;font-style:italic;font-size:0.95rem;">"As a busy mom of three, I barely had time to eat right. Salveo solved that. One scoop in the morning and I know my body is getting everything it needs. My skin has glowed too!"</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;background:linear-gradient(135deg,#52B788,#2D6A4F);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">JS</div>
+          <div>
+            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Jennilyn Santos</div>
+            <div style="font-size:0.78rem;color:#9CA3AF;">Verified Buyer · Davao</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 7 — DISTRIBUTOR
+═══════════════════════════════════════════════════════════ -->
+<section id="distributor" style="padding:100px 28px;background:#2D6A4F;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:52px;">
+      <span style="display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#52B788;margin-bottom:10px;">Order Now</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.75rem);font-weight:700;letter-spacing:-0.025em;color:#fff;line-height:1.14;">Order From Our<br>Trusted Distributor</h2>
+      <p style="margin-top:16px;color:rgba(255,255,255,0.68);max-width:450px;margin-left:auto;margin-right:auto;line-height:1.75;">Get authentic Salveo Barley Grass directly from your certified distributor — fast delivery and guaranteed authentic products.</p>
+    </div>
+
+    <div class="dist-grid" style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.14);border-radius:26px;padding:44px 48px;backdrop-filter:blur(12px);display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;">
+      <!-- Avatar -->
+      <div style="text-align:center;">
+        <div style="width:116px;height:116px;border-radius:50%;background:linear-gradient(135deg,#52B788,#1B4332);display:flex;align-items:center;justify-content:center;border:3px solid rgba(255,255,255,0.2);box-shadow:0 8px 32px rgba(0,0,0,0.22);margin:0 auto;">
+          <span style="font-size:2.4rem;font-weight:700;color:#fff;font-family:'Playfair Display',serif;">YN</span>
+        </div>
+        <div style="margin-top:12px;background:rgba(82,183,136,0.18);border:1px solid rgba(82,183,136,0.38);border-radius:100px;padding:4px 14px;display:inline-block;">
+          <span style="font-size:0.72rem;color:#52B788;font-weight:600;">✓ Authorized Distributor</span>
+        </div>
+      </div>
+      <!-- Details -->
+      <div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#fff;margin-bottom:4px;">Your Name Here</h3>
+        <p style="color:rgba(255,255,255,0.55);font-size:0.875rem;margin-bottom:18px;">📍 Philippines</p>
+        <p style="color:rgba(255,255,255,0.78);line-height:1.75;margin-bottom:30px;font-size:0.95rem;">Order directly from our trusted distributor. Fast delivery, authentic products, and dedicated customer service. Your wellness journey starts here.</p>
+        <div class="dist-btns" style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="#" class="btn-shopee">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            Buy on Shopee
+          </a>
+          <a href="#" class="btn-fb">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            Message on Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════ -->
+<footer style="background:#1B4332;padding:64px 28px 32px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="foot-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px;">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:12px;">Salveo<span style="color:#52B788;">.</span></div>
+        <p style="color:rgba(255,255,255,0.55);line-height:1.75;max-width:270px;font-size:0.875rem;">Family's partner in Wellness. Australia's #1 Organic Barley Grass supplement — pure, natural, and life-changing.</p>
+        <div style="display:flex;gap:12px;margin-top:22px;">
+          <a href="#" style="width:38px;height:38px;background:rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background 0.2s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" style="width:38px;height:38px;background:rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background 0.2s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:700;color:#fff;margin-bottom:18px;font-size:0.875rem;letter-spacing:0.04em;">Quick Links</div>
+        <div style="display:flex;flex-direction:column;gap:11px;">
+          <a href="#benefits" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.875rem;transition:color 0.2s ease;" onmouseover="this.style.color='#52B788'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Health Benefits</a>
+          <a href="#ingredients" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.875rem;transition:color 0.2s ease;" onmouseover="this.style.color='#52B788'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Ingredients</a>
+          <a href="#order" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.875rem;transition:color 0.2s ease;" onmouseover="this.style.color='#52B788'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Order Now</a>
+          <a href="#distributor" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.875rem;transition:color 0.2s ease;" onmouseover="this.style.color='#52B788'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:700;color:#fff;margin-bottom:18px;font-size:0.875rem;letter-spacing:0.04em;">Certifications</div>
+        <div style="display:flex;flex-direction:column;gap:11px;">
+          <span style="color:rgba(255,255,255,0.55);font-size:0.875rem;">✓ NASAA Certified Organic</span>
+          <span style="color:rgba(255,255,255,0.55);font-size:0.875rem;">✓ FDA Approved</span>
+          <span style="color:rgba(255,255,255,0.55);font-size:0.875rem;">✓ HALAL Certified</span>
+          <span style="color:rgba(255,255,255,0.55);font-size:0.875rem;">✓ No Preservatives</span>
+          <span style="color:rgba(255,255,255,0.55);font-size:0.875rem;">✓ Non-GMO</span>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="color:rgba(255,255,255,0.35);font-size:0.78rem;">© 2025 Salveo Barley Grass. All rights reserved.</p>
+      <p style="color:rgba(255,255,255,0.28);font-size:0.72rem;max-width:380px;text-align:right;">Not intended to diagnose, treat, cure, or prevent any disease. This product is a food supplement.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STICKY BUY BUTTON
+═══════════════════════════════════════════════════════════ -->
+<div id="stickyBuy">
+  <a href="#">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    Buy Now
+  </a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FLOATING MESSENGER
+═══════════════════════════════════════════════════════════ -->
+<div id="messenger">
+  <a href="#" title="Message on Facebook Messenger">
+    <div class="msg-pulse"></div>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17V22l2.86-1.57c.76.21 1.57.32 2.4.32 5.64 0 10-4.13 10-9.7C20.4 6.13 16.04 2 12 2zm1 13.06l-2.55-2.72L5.5 15.06l5.45-5.79 2.61 2.72 4.9-2.72-5.46 5.79z"/></svg>
+  </a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════ -->
+<script>
+  // ── Register ScrollTrigger ──────────────────────────────
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ── NAV: transparent → white on scroll ─────────────────
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ── HERO BG parallax ───────────────────────────────────
+  const heroBg = document.getElementById('heroBg');
+  window.addEventListener('scroll', () => {
+    heroBg.style.transform = `scale(1.06) translateY(${window.scrollY * 0.28}px)`;
+  }, { passive: true });
+
+  // ── MOBILE MENU ─────────────────────────────────────────
+  function openMob() {
+    document.getElementById('mobileMenu').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMob() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ── PRODUCT REVEAL (GSAP ScrollTrigger pinned) ──────────
+  const revSection  = document.getElementById('reveal');
+  const revProduct  = document.getElementById('revealProduct');
+  const revBg       = document.getElementById('revealBg');
+  const revPanels   = [
+    document.getElementById('rp1'),
+    document.getElementById('rp2'),
+    document.getElementById('rp3'),
+  ];
+
+  gsap.to(revProduct, {
+    scale: 1,
+    opacity: 1,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: revSection,
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: 1.8,
+    }
+  });
+
+  revPanels.forEach((panel, i) => {
+    const startPct = i * 28;
+    const endPct   = startPct + 24;
+    gsap.fromTo(panel,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1, y: 0, ease: 'power2.out',
+        scrollTrigger: {
+          trigger: revSection,
+          start: `${startPct}% top`,
+          end:   `${endPct}% top`,
+          scrub: 1.2,
+        }
+      }
+    );
+  });
+
+  // BG color: white → #D8F3DC
+  ScrollTrigger.create({
+    trigger: revSection,
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: true,
+    onUpdate: self => {
+      const p = self.progress;
+      const r = Math.round(255 - (255 - 216) * p);
+      const g = Math.round(255 - (255 - 243) * p);
+      const b = Math.round(255 - (255 - 220) * p);
+      revBg.style.background = `rgb(${r},${g},${b})`;
+    }
+  });
+
+  // ── PARALLAX BG ─────────────────────────────────────────
+  const paraBg = document.getElementById('paraBg');
+  if (paraBg) {
+    gsap.to(paraBg, {
+      yPercent: 22,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: paraBg.parentElement,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      }
+    });
+  }
+
+  // ── INTERSECTION OBSERVER ───────────────────────────────
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = parseInt(entry.target.dataset.delay || 0);
+        setTimeout(() => entry.target.classList.add('go'), delay);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.ben-card').forEach((el, i) => {
+    el.dataset.delay = i * 80;
+    obs.observe(el);
+  });
+  document.querySelectorAll('.ing-card').forEach((el, i) => {
+    el.dataset.delay = i * 70;
+    obs.observe(el);
+  });
+  document.querySelectorAll('.test-card').forEach((el, i) => {
+    el.dataset.delay = i * 110;
+    obs.observe(el);
+  });
+  document.querySelectorAll('.stat-item').forEach((el, i) => {
+    el.dataset.delay = i * 140;
+    obs.observe(el);
+  });
+
+  // ── STICKY BUY BUTTON ───────────────────────────────────
+  const stickyBuy = document.getElementById('stickyBuy');
+  window.addEventListener('scroll', () => {
+    stickyBuy.classList.toggle('show', window.scrollY > 380);
+  }, { passive: true });
+
+  // ── SMOOTH SCROLL ───────────────────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
