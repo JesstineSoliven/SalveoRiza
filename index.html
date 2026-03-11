@@ -105,48 +105,8 @@
     .hero-product {
       opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s forwards;
     }
-    /* Product jar CSS */
+    /* Product jar wrap */
     .jar-wrap { animation: float 5.5s ease-in-out infinite; position: relative; display: inline-block; }
-    .jar {
-      width: 260px; height: 310px;
-      background: linear-gradient(160deg, #2D6A4F 0%, #1B4332 100%);
-      border-radius: 36px 36px 44px 44px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
-      box-shadow: 0 40px 90px rgba(27,67,50,0.35), 0 8px 32px rgba(0,0,0,0.15),
-                  inset 0 1px 0 rgba(255,255,255,0.12);
-      position: relative; overflow: hidden;
-    }
-    .jar::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 54px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.1), transparent);
-      border-radius: 36px 36px 0 0;
-    }
-    .jar::after {
-      content: ''; position: absolute;
-      top: -40%; left: -20%; width: 60%; height: 80%;
-      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
-    }
-    .jar-lid {
-      position: absolute; top: 0; left: 0; right: 0; height: 44px;
-      background: linear-gradient(135deg, #52B788, #2D6A4F);
-      border-radius: 36px 36px 0 0;
-    }
-    .jar-content { position: relative; z-index: 1; text-align: center; padding: 0 20px; }
-    .jar-leaf { font-size: 2.75rem; display: block; margin-bottom: 8px; }
-    .jar-brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem; font-weight: 700; color: #fff; letter-spacing: 0.1em;
-    }
-    .jar-name {
-      font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.65);
-      letter-spacing: 0.14em; text-transform: uppercase; margin-top: 2px;
-    }
-    .jar-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.2); margin: 10px auto; }
-    .jar-cert {
-      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 100px; padding: 4px 12px;
-      font-size: 0.65rem; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 0.06em;
-    }
     /* Floating labels */
     .fl {
       position: absolute; background: #fff; border-radius: 12px;
@@ -297,33 +257,104 @@
     .nav-links { display: flex; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
     .hamburger span { display: block; width: 24px; height: 2px; background: #1B4332; border-radius: 2px; }
+
+    /* Tablet: ≤1023px */
     @media (max-width: 1023px) {
       .fl { display: none; }
       .jar { width: 220px; height: 265px; }
+      /* Ingredients: 3 → 2 columns */
+      .ing-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      /* Testimonials: 3 → 2 columns */
+      .test-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; }
+      /* Footer: 3 → 2 columns */
+      .foot-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 32px !important; }
+      /* Benefits gap */
+      .ben-grid { gap: 32px !important; }
+      /* Distributor gap */
+      .dist-grid { gap: 28px !important; }
+      /* Nav links gap */
+      .nav-links { gap: 20px !important; }
+      /* Stat numbers fluid */
+      .stat-num { font-size: clamp(1.8rem, 3vw, 2.75rem) !important; }
+      /* Hide reveal — 240vh ghost scroll is unusable on tablet */
+      #reveal { display: none !important; }
+      /* Hero: single column on tablets, hide product image */
+      #hero-grid { grid-template-columns: 1fr !important; }
+      .hero-product { display: none; }
     }
+
+    /* Mobile: ≤767px */
     @media (max-width: 767px) {
       .nav-links { display: none; }
       .nav-cta-desk { display: none !important; }
       .hamburger { display: flex; }
       #hero-grid { grid-template-columns: 1fr !important; }
       .hero-product { display: none; }
-      .ben-grid { grid-template-columns: 1fr !important; }
+      /* Hide reveal section — removes 240vh ghost scroll space on mobile */
+      #reveal { display: none !important; }
+      /* Benefits */
+      .ben-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
       .ben-card { transform: translateY(32px) !important; }
       .ben-card.go { transform: translateY(0) !important; }
+      .ben-card h3 { font-size: 1.35rem !important; }
+      #ben1, #ben2, #ben3, #ben4 { margin-bottom: 48px !important; }
+      /* Ingredients */
       .ing-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .ing-card { padding: 20px !important; }
+      /* Testimonials */
       .test-grid { grid-template-columns: 1fr !important; }
-      .dist-grid { grid-template-columns: 1fr !important; text-align: center; }
-      .dist-btns { flex-direction: column !important; }
-      .dist-btns a { justify-content: center; }
-      .foot-grid { grid-template-columns: 1fr !important; }
-      #reveal .rev-right { display: none; }
+      .test-card { padding: 20px !important; }
+      /* Products */
+      .prod-grid { grid-template-columns: 1fr !important; }
+      /* Distributor */
+      .dist-grid { grid-template-columns: 1fr !important; text-align: center; gap: 20px !important; padding: 28px 24px !important; }
+      .dist-grid img { margin: 0 auto !important; }
+      .dist-btns { flex-direction: column !important; align-items: center !important; }
+      .dist-btns a { justify-content: center; width: 100%; max-width: 280px; }
+      /* Footer */
+      .foot-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+      /* Headings */
       .sec-h2 { font-size: 1.75rem !important; }
+      /* Section padding */
+      #products { padding: 64px 20px !important; }
+      #benefits { padding: 64px 20px !important; }
+      #ingredients { padding: 64px 20px !important; }
+      #order { padding: 80px 20px !important; }
+      #distributor { padding: 64px 20px !important; }
+      #testimonials { padding: 64px 20px !important; }
+      footer { padding: 48px 20px 28px !important; }
+      /* Parallax stats: 1 column */
+      .para-stats { grid-template-columns: 1fr !important; gap: 20px !important; max-width: 200px !important; }
+      .stat-num { font-size: 2.2rem !important; }
+      /* Floating buttons: prevent overlap */
+      #messenger { bottom: 20px !important; right: 20px !important; }
+      #messenger a { width: 52px !important; height: 52px !important; }
+      #stickyBuy { bottom: 88px !important; right: 20px !important; }
     }
+
+    /* Small phone: ≤479px */
     @media (max-width: 479px) {
       .ing-grid { grid-template-columns: 1fr !important; }
       .hero-h1 { font-size: 2.2rem !important; }
       .hero-btns { flex-direction: column !important; }
       .hero-btns a { width: 100%; justify-content: center; }
+      .sec-h2 { font-size: 1.5rem !important; }
+      .stat-num { font-size: 1.9rem !important; }
+      #hero-grid { padding-top: 80px !important; padding-bottom: 36px !important; }
+      .test-card { padding: 18px !important; }
+      .dist-grid { padding: 22px 18px !important; }
+      footer { padding: 40px 16px 24px !important; }
+    }
+
+    /* ── PRODUCT CARDS ─────────────────────────────────── */
+    .prod-card {
+      opacity: 0; transform: translateY(60px);
+      transition: box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .prod-card:hover {
+      transform: translateY(-6px) scale(1.015) !important;
+      box-shadow: 0 20px 56px rgba(45,106,79,0.14) !important;
     }
   </style>
 </head>
@@ -334,11 +365,12 @@
 ═══════════════════════════════════════════════════════════ -->
 <div id="mobileMenu">
   <button onclick="closeMob()" style="position:absolute;top:20px;right:20px;background:none;border:none;font-size:1.75rem;cursor:pointer;color:#1B4332;line-height:1;">✕</button>
+  <a href="#products" onclick="closeMob()">Products</a>
   <a href="#benefits" onclick="closeMob()">Benefits</a>
   <a href="#ingredients" onclick="closeMob()">Ingredients</a>
   <a href="#order" onclick="closeMob()">Order</a>
   <a href="#distributor" onclick="closeMob()">Contact</a>
-  <a href="#" class="btn-shopee" style="font-size:0.95rem;padding:14px 30px;">Buy on Shopee</a>
+  <a href="https://ph.shp.ee/JFk3CMsN" class="btn-shopee" style="font-size:0.95rem;padding:14px 30px;">Buy on Shopee</a>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -348,13 +380,14 @@
   <div style="max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;">
     <a href="#" style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:#2D6A4F;text-decoration:none;letter-spacing:-0.02em;">Salveo<span style="color:#52B788;">.</span></a>
     <div class="nav-links" style="align-items:center;gap:32px;">
+      <a href="#products" style="font-size:0.875rem;font-weight:500;color:#374151;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#2D6A4F'" onmouseout="this.style.color='#374151'">Products</a>
       <a href="#benefits" style="font-size:0.875rem;font-weight:500;color:#374151;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#2D6A4F'" onmouseout="this.style.color='#374151'">Benefits</a>
       <a href="#ingredients" style="font-size:0.875rem;font-weight:500;color:#374151;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#2D6A4F'" onmouseout="this.style.color='#374151'">Ingredients</a>
       <a href="#order" style="font-size:0.875rem;font-weight:500;color:#374151;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#2D6A4F'" onmouseout="this.style.color='#374151'">Order</a>
       <a href="#distributor" style="font-size:0.875rem;font-weight:500;color:#374151;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#2D6A4F'" onmouseout="this.style.color='#374151'">Contact</a>
     </div>
     <div style="display:flex;align-items:center;gap:14px;">
-      <a href="#" class="btn-shopee nav-cta-desk" style="padding:10px 22px;font-size:0.875rem;box-shadow:0 2px 10px rgba(238,77,45,0.3);">Buy on Shopee</a>
+      <a href="https://ph.shp.ee/JFk3CMsN" class="btn-shopee nav-cta-desk" style="padding:10px 22px;font-size:0.875rem;box-shadow:0 2px 10px rgba(238,77,45,0.3);">Buy on Shopee</a>
       <div class="hamburger" onclick="openMob()"><span></span><span></span><span></span></div>
     </div>
   </div>
@@ -372,7 +405,7 @@
   </div>
 
   <!-- Content -->
-  <div id="hero-grid" style="position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:100px 28px 60px;width:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;min-height:100vh;">
+  <div id="hero-grid" style="position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:100px 28px 60px;width:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(24px,4vw,64px);min-height:100vh;">
 
     <!-- LEFT: Text -->
     <div>
@@ -387,7 +420,7 @@
         Experience the power of Salveo Barley Grass for daily wellness — 100% pure, NASAA-certified organic from pristine Australian farms.
       </p>
       <div class="hero-btns" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;">
-        <a href="#" class="btn-shopee">
+        <a href="https://ph.shp.ee/JFk3CMsN" class="btn-shopee">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
           Buy on Shopee
         </a>
@@ -397,7 +430,7 @@
         </a>
       </div>
       <!-- Trust row -->
-      <div class="hero-trust" style="display:flex;gap:28px;flex-wrap:wrap;">
+      <div class="hero-trust" style="display:flex;gap:clamp(12px,3vw,28px);flex-wrap:wrap;">
         <div style="display:flex;align-items:center;gap:7px;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="#52B788"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <span style="font-size:0.8rem;font-weight:600;color:#374151;">NASAA Certified</span>
@@ -422,17 +455,9 @@
         <div class="fl fl-1">300+ Enzymes</div>
         <div class="fl fl-2">20 Amino Acids</div>
         <div class="fl fl-3">HALAL Certified</div>
-        <!-- Jar -->
-        <div class="jar">
-          <div class="jar-lid"></div>
-          <div class="jar-content" style="margin-top:44px;">
-            <span class="jar-leaf">🌿</span>
-            <div class="jar-brand">SALVEO</div>
-            <div class="jar-name">Barley Grass</div>
-            <div class="jar-divider"></div>
-            <div class="jar-cert">100% Organic · NASAA · HALAL</div>
-          </div>
-        </div>
+        <!-- Product image -->
+        <img src="Products/Product_Hero.png" alt="Salveo Barley Grass"
+          style="width:100%;max-width:500px;display:block;position:relative;z-index:1;filter:drop-shadow(0 40px 60px rgba(27,67,50,0.35));">
       </div>
     </div>
   </div>
@@ -451,32 +476,48 @@
   <div id="revealSticky">
     <div id="revealBg"></div>
 
-    <!-- Central product (scales via GSAP) -->
-    <div id="revealProduct" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(0.6);z-index:1;opacity:0.3;">
-      <div style="width:180px;height:220px;background:linear-gradient(160deg,#2D6A4F,#1B4332);border-radius:26px 26px 34px 34px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:0 32px 80px rgba(27,67,50,0.3),0 6px 24px rgba(0,0,0,0.12);">
-        <span style="font-size:2.2rem;">🌿</span>
-        <div style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#fff;letter-spacing:0.1em;">SALVEO</div>
-        <div style="font-size:0.6rem;color:rgba(255,255,255,0.55);letter-spacing:0.12em;text-transform:uppercase;">Barley Grass</div>
-      </div>
-    </div>
+    <!-- Left + Right panels -->
+    <div class="rev-right" style="position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:0 48px;display:flex;justify-content:space-between;align-items:center;gap:40px;pointer-events:none;">
 
-    <!-- Right panel text -->
-    <div class="rev-right" style="position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:0 28px;display:flex;justify-content:flex-end;pointer-events:none;">
+      <!-- Left: crossfading image panel -->
+      <div id="revealLeft" style="position:relative;width:42%;max-width:460px;pointer-events:none;flex-shrink:0;">
+        <div style="position:relative;border-radius:28px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 40px 80px rgba(27,67,50,0.22),0 8px 32px rgba(0,0,0,0.10);">
+          <img id="ri1" src="https://images.unsplash.com/photo-1500651780226-92db37d4ae4f?w=800&auto=format&fit=crop&q=80" alt="Australian barley farm"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;">
+          <img id="ri2" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&auto=format&fit=crop&q=80" alt="Healthy green superfoods"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;">
+          <img id="ri3" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&auto=format&fit=crop&q=80" alt="Wellness lifestyle"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;">
+          <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(27,67,50,0.15) 0%,transparent 55%);pointer-events:none;"></div>
+        </div>
+        <!-- Floating accent badge -->
+        <div style="position:absolute;bottom:-16px;right:-16px;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 12px 36px rgba(27,67,50,0.16);display:flex;align-items:center;gap:10px;pointer-events:none;">
+          <div style="width:34px;height:34px;background:linear-gradient(135deg,#52B788,#2D6A4F);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-size:1rem;">🌿</span>
+          </div>
+          <div>
+            <div style="font-size:0.65rem;color:#6B7280;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;">100% Pure</div>
+            <div style="font-size:0.8rem;font-weight:700;color:#1B4332;">Australian Origin</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: text panels -->
       <div style="max-width:420px;pointer-events:all;">
 
-        <div id="rp1" style="opacity:0;transform:translateY(28px);transition:opacity 0.6s ease,transform 0.6s ease;">
+        <div id="rp1" style="opacity:0;transform:scale(0.88);transition:opacity 0.7s ease,transform 0.7s cubic-bezier(0.22,1,0.36,1);text-align:center;">
           <span class="sec-label">What It Is</span>
           <h2 class="sec-h2" style="font-size:clamp(1.5rem,2.5vw,2.1rem);margin-bottom:14px;">100% Pure Australian<br>Barley Grass</h2>
           <p style="color:#4B5563;line-height:1.75;font-size:0.95rem;">Grown in the pristine farmlands of Swan Hill, Victoria, Australia. Special low-temperature drying preserves every enzyme, vitamin, and mineral in its natural bioavailable form.</p>
         </div>
 
-        <div id="rp2" style="margin-top:32px;opacity:0;transform:translateY(28px);transition:opacity 0.6s ease,transform 0.6s ease;">
+        <div id="rp2" style="margin-top:32px;opacity:0;transform:scale(0.88);transition:opacity 0.7s ease,transform 0.7s cubic-bezier(0.22,1,0.36,1);text-align:center;">
           <span class="sec-label">Why It Works</span>
           <h2 class="sec-h2" style="font-size:clamp(1.5rem,2.5vw,2.1rem);margin-bottom:14px;">Nature's Most Nutrient-Dense Superfood</h2>
           <p style="color:#4B5563;line-height:1.75;font-size:0.95rem;">300+ enzymes, 20 amino acids, vitamins A through K, and powerful antioxidants that support your body's natural healing, detox, and cellular regeneration.</p>
         </div>
 
-        <div id="rp3" style="margin-top:32px;opacity:0;transform:translateY(28px);transition:opacity 0.6s ease,transform 0.6s ease;">
+        <div id="rp3" style="margin-top:32px;opacity:0;transform:scale(0.88);transition:opacity 0.7s ease,transform 0.7s cubic-bezier(0.22,1,0.36,1);text-align:center;">
           <span class="sec-label">Trusted Results</span>
           <h2 class="sec-h2" style="font-size:clamp(1.5rem,2.5vw,2.1rem);margin-bottom:14px;">Over 1 Million Families<br>Trust Salveo</h2>
           <p style="color:#4B5563;line-height:1.75;font-size:0.95rem;margin-bottom:18px;">11+ years in the wellness industry and over 1 million packs sold in the Philippines, earning the Asia-Pacific Best Organic Supplement award in 2015.</p>
@@ -492,7 +533,125 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     SECTION 3 — HEALTH BENEFITS
+     SECTION 3 — PRODUCTS SHOWCASE
+═══════════════════════════════════════════════════════════ -->
+<section id="products" style="padding:100px 28px;background:#F0FAF4;">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <!-- Heading -->
+    <div style="text-align:center;margin-bottom:72px;">
+      <span class="sec-label">Our Products</span>
+      <h2 class="sec-h2">Choose Your<br>Wellness Format</h2>
+      <p style="margin-top:16px;color:#4B5563;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.75;">Same 100% pure Australian barley grass — available in the form that best fits your lifestyle.</p>
+    </div>
+
+    <!-- 2×2 grid -->
+    <div class="prod-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:28px;">
+
+      <!-- Card 1: SBG Powder in Jar 240g -->
+      <div class="prod-card" style="background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 8px 32px rgba(45,106,79,0.08);border:1px solid rgba(45,106,79,0.07);">
+        <div style="background:#fff;padding:32px 32px 0;display:flex;justify-content:center;align-items:center;min-height:300px;">
+          <img src="https://salveowell.com/admin/uploads/products/1755496534n2yjB.jpg"
+               alt="Salveo Barley Grass Powder in Jar 240g"
+               loading="lazy"
+               style="width:100%;max-width:260px;height:300px;object-fit:contain;display:block;margin:0 auto;"
+               onerror="this.style.display='none';this.parentElement.style.alignItems='center';this.parentElement.innerHTML='<div style=\'height:300px;display:flex;align-items:center;justify-content:center;\'><span style=\'font-size:5rem;\'>🌿</span></div>'">
+        </div>
+        <div style="padding:28px 32px 36px;">
+          <div style="display:inline-block;background:#D8F3DC;color:#1B4332;padding:4px 13px;border-radius:100px;font-size:0.73rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;">240g Powder</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:#1B4332;margin-bottom:10px;line-height:1.25;">SBG Powder in Jar</h3>
+          <p style="color:#4B5563;font-size:0.9rem;line-height:1.72;margin-bottom:18px;">Our classic jar format — the best value for daily users. Enough for a full month of morning wellness rituals.</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px;">
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Ideal for daily home use</li>
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>~30 servings per jar</li>
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Mix with water or juice</li>
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Resealable, stay-fresh lid</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 2: SBG Powder Trial Pack 80g -->
+      <div class="prod-card" style="background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 8px 32px rgba(45,106,79,0.08);border:1px solid rgba(45,106,79,0.07);">
+        <div style="background:#fff;padding:32px 32px 0;display:flex;justify-content:center;align-items:center;min-height:300px;">
+          <img src="https://salveowell.com/admin/uploads/products/1755496425SeBvl.jpg"
+               alt="Salveo Barley Grass Powder Trial Pack 80g"
+               loading="lazy"
+               style="width:100%;max-width:260px;height:300px;object-fit:contain;display:block;margin:0 auto;"
+               onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\'height:300px;display:flex;align-items:center;justify-content:center;\'><span style=\'font-size:5rem;\'>🌿</span></div>'">
+        </div>
+        <div style="padding:28px 32px 36px;">
+          <div style="display:inline-block;background:#D8F3DC;color:#1B4332;padding:4px 13px;border-radius:100px;font-size:0.73rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;">80g Trial Pack</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:#1B4332;margin-bottom:10px;line-height:1.25;">SBG Powder Trial Pack</h3>
+          <p style="color:#4B5563;font-size:0.9rem;line-height:1.72;margin-bottom:18px;">New to Salveo? Start here. The trial pack lets you experience the full benefits before committing to a larger supply.</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px;">
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>~10 servings — a full trial week</li>
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Perfect for first-time buyers</li>
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Same 100% pure powder formula</li>
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>No commitment, experience first</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 3: SBG Powder On The Go 12 Sachets -->
+      <div class="prod-card" style="background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 8px 32px rgba(45,106,79,0.08);border:1px solid rgba(45,106,79,0.07);">
+        <div style="background:#fff;padding:32px 32px 0;display:flex;justify-content:center;align-items:center;min-height:300px;">
+          <img src="https://salveowell.com/admin/uploads/products/1755496353zYGOP.jpg"
+               alt="Salveo Barley Grass Powder On The Go 12 Sachets"
+               loading="lazy"
+               style="width:100%;max-width:260px;height:300px;object-fit:contain;display:block;margin:0 auto;"
+               onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\'height:300px;display:flex;align-items:center;justify-content:center;\'><span style=\'font-size:5rem;\'>🌿</span></div>'">
+        </div>
+        <div style="padding:28px 32px 36px;">
+          <div style="display:inline-block;background:#D8F3DC;color:#1B4332;padding:4px 13px;border-radius:100px;font-size:0.73rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;">12 Sachets</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:#1B4332;margin-bottom:10px;line-height:1.25;">SBG Powder On The Go</h3>
+          <p style="color:#4B5563;font-size:0.9rem;line-height:1.72;margin-bottom:18px;">Never miss a dose. Pre-measured sachets make it effortless to take your barley grass anywhere — travel, work, or gym.</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px;">
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Pre-measured single servings</li>
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Portable — fits in any bag</li>
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Great for travel &amp; busy days</li>
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>No measuring, no mess</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 4: SBG Capsules 500mg × 120 tablets -->
+      <div class="prod-card" style="background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 8px 32px rgba(45,106,79,0.08);border:1px solid rgba(45,106,79,0.07);">
+        <div style="background:#fff;padding:32px 32px 0;display:flex;justify-content:center;align-items:center;min-height:300px;">
+          <img src="https://salveowell.com/admin/uploads/products/1760685798mbub3.jpg"
+               alt="Salveo Barley Grass Capsules 500mg 120 tablets"
+               loading="lazy"
+               style="width:100%;max-width:260px;height:300px;object-fit:contain;display:block;margin:0 auto;"
+               onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\'height:300px;display:flex;align-items:center;justify-content:center;\'><span style=\'font-size:5rem;\'>💊</span></div>'">
+        </div>
+        <div style="padding:28px 32px 36px;">
+          <div style="display:inline-block;background:#D8F3DC;color:#1B4332;padding:4px 13px;border-radius:100px;font-size:0.73rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;">500mg × 120 Capsules</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:#1B4332;margin-bottom:10px;line-height:1.25;">SBG Capsules</h3>
+          <p style="color:#4B5563;font-size:0.9rem;line-height:1.72;margin-bottom:18px;">Prefer capsules? Same 100% pure barley grass — just swallow with water. Taste-free and convenient for those who prefer a supplement format.</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px;">
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>500mg per capsule</li>
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>120 capsules per bottle</li>
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Tasteless — easy to take</li>
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:#374151;"><span style="width:18px;height:18px;background:#D8F3DC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Same certified organic formula</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /prod-grid -->
+
+    <!-- CTA row -->
+    <div style="text-align:center;margin-top:56px;">
+      <p style="color:#6B7280;font-size:0.9rem;margin-bottom:22px;">All products are 100% authentic. Order directly through our certified distributor.</p>
+      <a href="https://ph.shp.ee/JFk3CMsN" class="btn-shopee">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Order on Shopee
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 4 — HEALTH BENEFITS
 ═══════════════════════════════════════════════════════════ -->
 <section id="benefits" style="padding:100px 28px;background:#fff;">
   <div style="max-width:1200px;margin:0 auto;">
@@ -675,7 +834,7 @@
 
     <!-- Glassmorphism product card -->
     <div style="display:inline-block;margin-bottom:68px;cursor:default;transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);" onmouseover="this.style.transform='rotateY(10deg) translateY(-10px) scale(1.04)'" onmouseout="this.style.transform='rotateY(0) translateY(0) scale(1)'">
-      <div style="width:150px;height:190px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);border-radius:22px 22px 28px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(20px);box-shadow:0 32px 64px rgba(0,0,0,0.28),inset 0 1px 0 rgba(255,255,255,0.18);">
+      <div style="width:clamp(100px,20vw,150px);aspect-ratio:4/5;height:auto;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);border-radius:22px 22px 28px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(20px);box-shadow:0 32px 64px rgba(0,0,0,0.28),inset 0 1px 0 rgba(255,255,255,0.18);">
         <span style="font-size:1.9rem;">🌿</span>
         <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#fff;margin-top:8px;letter-spacing:0.08em;">SALVEO</div>
         <div style="font-size:0.58rem;color:rgba(255,255,255,0.55);margin-top:3px;letter-spacing:0.11em;">BARLEY GRASS</div>
@@ -683,17 +842,17 @@
     </div>
 
     <!-- Stats -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:640px;margin:0 auto;">
+    <div class="para-stats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:640px;margin:0 auto;">
       <div class="stat-item">
-        <div style="font-family:'Playfair Display',serif;font-size:2.75rem;font-weight:700;color:#fff;line-height:1;">1M+</div>
+        <div class="stat-num" data-target="1" data-suffix="M+" data-prefix="" style="font-family:'Playfair Display',serif;font-size:2.75rem;font-weight:700;color:#fff;line-height:1;">0M+</div>
         <div style="font-size:0.85rem;color:rgba(255,255,255,0.65);margin-top:6px;">Packs Sold</div>
       </div>
       <div class="stat-item">
-        <div style="font-family:'Playfair Display',serif;font-size:2.75rem;font-weight:700;color:#fff;line-height:1;">11+</div>
+        <div class="stat-num" data-target="11" data-suffix="+" data-prefix="" style="font-family:'Playfair Display',serif;font-size:2.75rem;font-weight:700;color:#fff;line-height:1;">0+</div>
         <div style="font-size:0.85rem;color:rgba(255,255,255,0.65);margin-top:6px;">Years of Wellness</div>
       </div>
       <div class="stat-item">
-        <div style="font-family:'Playfair Display',serif;font-size:2.75rem;font-weight:700;color:#fff;line-height:1;">#1</div>
+        <div class="stat-num" data-target="1" data-suffix="" data-prefix="#" style="font-family:'Playfair Display',serif;font-size:2.75rem;font-weight:700;color:#fff;line-height:1;">#0</div>
         <div style="font-size:0.85rem;color:rgba(255,255,255,0.65);margin-top:6px;">Organic Barley in PH</div>
       </div>
     </div>
@@ -703,7 +862,7 @@
 <!-- ═══════════════════════════════════════════════════════════
      SECTION 6 — TESTIMONIALS
 ═══════════════════════════════════════════════════════════ -->
-<section style="padding:100px 28px;background:#fff;">
+<section id="testimonials" style="padding:100px 28px;background:#fff;">
   <div style="max-width:1200px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:60px;">
       <span class="sec-label">Real Stories</span>
@@ -764,24 +923,24 @@
     <div class="dist-grid" style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.14);border-radius:26px;padding:44px 48px;backdrop-filter:blur(12px);display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;">
       <!-- Avatar -->
       <div style="text-align:center;">
-        <div style="width:116px;height:116px;border-radius:50%;background:linear-gradient(135deg,#52B788,#1B4332);display:flex;align-items:center;justify-content:center;border:3px solid rgba(255,255,255,0.2);box-shadow:0 8px 32px rgba(0,0,0,0.22);margin:0 auto;">
-          <span style="font-size:2.4rem;font-weight:700;color:#fff;font-family:'Playfair Display',serif;">YN</span>
-        </div>
+        <img src="Profile/Riza.jpg" alt="Riza Cabalquinto"
+          style="width:116px;height:116px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,0.2);box-shadow:0 8px 32px rgba(0,0,0,0.22);margin:0 auto;display:block;">
         <div style="margin-top:12px;background:rgba(82,183,136,0.18);border:1px solid rgba(82,183,136,0.38);border-radius:100px;padding:4px 14px;display:inline-block;">
           <span style="font-size:0.72rem;color:#52B788;font-weight:600;">✓ Authorized Distributor</span>
         </div>
       </div>
       <!-- Details -->
       <div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#fff;margin-bottom:4px;">Your Name Here</h3>
-        <p style="color:rgba(255,255,255,0.55);font-size:0.875rem;margin-bottom:18px;">📍 Philippines</p>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#fff;margin-bottom:4px;">Riza Cabalquinto</h3>
+        <p style="color:#52B788;font-size:0.8rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Legit Distributor</p>
+        <p style="color:rgba(255,255,255,0.55);font-size:0.875rem;margin-bottom:18px;">📞 09355045029</p>
         <p style="color:rgba(255,255,255,0.78);line-height:1.75;margin-bottom:30px;font-size:0.95rem;">Order directly from our trusted distributor. Fast delivery, authentic products, and dedicated customer service. Your wellness journey starts here.</p>
         <div class="dist-btns" style="display:flex;gap:14px;flex-wrap:wrap;">
-          <a href="#" class="btn-shopee">
+          <a href="https://ph.shp.ee/JFk3CMsN" class="btn-shopee">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
             Buy on Shopee
           </a>
-          <a href="#" class="btn-fb">
+          <a href="https://web.facebook.com/profile.php?id=61564299312503&rdid=J9yveFXbdVznVIe0&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F1DYYnHftKV%2F%3F_rdc%3D1%26_rdr#" class="btn-fb">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
             Message on Facebook
           </a>
@@ -840,7 +999,7 @@
      STICKY BUY BUTTON
 ═══════════════════════════════════════════════════════════ -->
 <div id="stickyBuy">
-  <a href="#">
+  <a href="https://ph.shp.ee/JFk3CMsN">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
     Buy Now
   </a>
@@ -850,7 +1009,7 @@
      FLOATING MESSENGER
 ═══════════════════════════════════════════════════════════ -->
 <div id="messenger">
-  <a href="#" title="Message on Facebook Messenger">
+  <a href="https://web.facebook.com/profile.php?id=61564299312503&rdid=J9yveFXbdVznVIe0&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F1DYYnHftKV%2F%3F_rdc%3D1%26_rdr#" title="Message on Facebook Messenger">
     <div class="msg-pulse"></div>
     <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17V22l2.86-1.57c.76.21 1.57.32 2.4.32 5.64 0 10-4.13 10-9.7C20.4 6.13 16.04 2 12 2zm1 13.06l-2.55-2.72L5.5 15.06l5.45-5.79 2.61 2.72 4.9-2.72-5.46 5.79z"/></svg>
   </a>
@@ -887,7 +1046,6 @@
 
   // ── PRODUCT REVEAL (GSAP ScrollTrigger pinned) ──────────
   const revSection  = document.getElementById('reveal');
-  const revProduct  = document.getElementById('revealProduct');
   const revBg       = document.getElementById('revealBg');
   const revPanels   = [
     document.getElementById('rp1'),
@@ -895,25 +1053,13 @@
     document.getElementById('rp3'),
   ];
 
-  gsap.to(revProduct, {
-    scale: 1,
-    opacity: 1,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: revSection,
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: 1.8,
-    }
-  });
-
   revPanels.forEach((panel, i) => {
     const startPct = i * 28;
     const endPct   = startPct + 24;
     gsap.fromTo(panel,
-      { opacity: 0, y: 30 },
+      { opacity: 0, scale: 0.88 },
       {
-        opacity: 1, y: 0, ease: 'power2.out',
+        opacity: 1, scale: 1, ease: 'power2.out',
         scrollTrigger: {
           trigger: revSection,
           start: `${startPct}% top`,
@@ -922,6 +1068,42 @@
         }
       }
     );
+  });
+
+  // ── REVEAL IMAGE CROSSFADE ──────────────────────────────
+  const revImages = [
+    document.getElementById('ri1'),
+    document.getElementById('ri2'),
+    document.getElementById('ri3'),
+  ];
+
+  revImages.forEach((img, i) => {
+    if (!img) return;
+    const startPct = i * 28;
+    const endPct   = startPct + 24;
+    gsap.fromTo(img,
+      { opacity: 0 },
+      {
+        opacity: 1, ease: 'power1.inOut',
+        scrollTrigger: {
+          trigger: revSection,
+          start: `${startPct}% top`,
+          end:   `${endPct}% top`,
+          scrub: 1.5,
+        }
+      }
+    );
+    if (i < 2) {
+      gsap.to(img, {
+        opacity: 0, ease: 'power1.inOut',
+        scrollTrigger: {
+          trigger: revSection,
+          start: `${endPct + 4}% top`,
+          end:   `${(i + 1) * 28}% top`,
+          scrub: 1.5,
+        }
+      });
+    }
   });
 
   // BG color: white → #D8F3DC
@@ -980,6 +1162,53 @@
   document.querySelectorAll('.stat-item').forEach((el, i) => {
     el.dataset.delay = i * 140;
     obs.observe(el);
+  });
+
+  // ── STAT COUNT-UP ────────────────────────────────────────
+  const statObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const item = entry.target;
+      const numEl = item.querySelector('.stat-num');
+      if (!numEl) return;
+      const target = parseInt(numEl.dataset.target);
+      const suffix = numEl.dataset.suffix || '';
+      const prefix = numEl.dataset.prefix || '';
+      const delay  = parseInt(item.dataset.delay || 0);
+      const duration = 1400;
+      setTimeout(() => {
+        const start = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          numEl.textContent = prefix + Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }, delay);
+      statObs.unobserve(item);
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.stat-item').forEach(el => statObs.observe(el));
+
+  // ── PRODUCTS SECTION (GSAP ScrollTrigger stagger) ───────
+  gsap.utils.toArray('.prod-card').forEach((card, i) => {
+    gsap.fromTo(card,
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.85,
+        ease: 'power3.out',
+        delay: (i % 2) * 0.13,
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        }
+      }
+    );
   });
 
   // ── STICKY BUY BUTTON ───────────────────────────────────
