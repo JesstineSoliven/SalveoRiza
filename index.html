@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Salveo Barley Grass — Pure Nutrition from Nature</title>
+  <link rel="icon" type="image/png" href="layer-z1-remove-background.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
@@ -346,6 +347,10 @@
       footer { padding: 40px 16px 24px !important; }
     }
 
+    @media (max-width: 640px) {
+      #heroBgImg { background-position: center 32% !important; transform: scale(1.05) !important; }
+    }
+
     /* ── PRODUCT CARDS ─────────────────────────────────── */
     .prod-card {
       opacity: 0; transform: translateY(60px);
@@ -370,7 +375,7 @@
   <a href="#ingredients" onclick="closeMob()">Ingredients</a>
   <a href="#order" onclick="closeMob()">Order</a>
   <a href="#distributor" onclick="closeMob()">Contact</a>
-  <a href="https://ph.shp.ee/JFk3CMsN" class="btn-shopee" style="font-size:0.95rem;padding:14px 30px;">Buy on Shopee</a>
+  <a href="https://ph.shp.ee/2UgHZF5y" class="btn-shopee" style="font-size:0.95rem;padding:14px 30px;">Buy on Shopee</a>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -378,7 +383,9 @@
 ═══════════════════════════════════════════════════════════ -->
 <nav id="navbar">
   <div style="max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;">
-    <a href="#" style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:#2D6A4F;text-decoration:none;letter-spacing:-0.02em;">Salveo<span style="color:#52B788;">.</span></a>
+    <a href="#" style="display:flex;align-items:center;text-decoration:none;">
+      <img src="logo-transparent.png" alt="Salveo Well" style="height:34px;width:auto;display:block;">
+    </a>
     <div class="nav-links" style="align-items:center;gap:32px;">
       <a href="#products" style="font-size:0.875rem;font-weight:500;color:#374151;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#2D6A4F'" onmouseout="this.style.color='#374151'">Products</a>
       <a href="#benefits" style="font-size:0.875rem;font-weight:500;color:#374151;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#2D6A4F'" onmouseout="this.style.color='#374151'">Benefits</a>
@@ -387,7 +394,7 @@
       <a href="#distributor" style="font-size:0.875rem;font-weight:500;color:#374151;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#2D6A4F'" onmouseout="this.style.color='#374151'">Contact</a>
     </div>
     <div style="display:flex;align-items:center;gap:14px;">
-      <a href="https://ph.shp.ee/JFk3CMsN" class="btn-shopee nav-cta-desk" style="padding:10px 22px;font-size:0.875rem;box-shadow:0 2px 10px rgba(238,77,45,0.3);">Buy on Shopee</a>
+      <a href="https://ph.shp.ee/2UgHZF5y" class="btn-shopee nav-cta-desk" style="padding:10px 22px;font-size:0.875rem;box-shadow:0 2px 10px rgba(238,77,45,0.3);">Buy on Shopee</a>
       <div class="hamburger" onclick="openMob()"><span></span><span></span><span></span></div>
     </div>
   </div>
@@ -399,9 +406,9 @@
 <section id="hero" style="position:relative;min-height:100vh;display:flex;align-items:center;">
   <!-- BG -->
   <div id="heroBg" style="position:absolute;inset:0;z-index:0;overflow:hidden;transform:scale(1.06);
-    background:url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=1920&q=85&fit=crop') center/cover no-repeat,
-               linear-gradient(135deg,#D8F3DC 0%,#B7E4C7 100%);">
-    <div style="position:absolute;inset:0;background:linear-gradient(110deg,rgba(255,255,255,0.88) 0%,rgba(255,255,255,0.65) 38%,rgba(255,255,255,0.05) 68%,rgba(27,67,50,0.18) 100%);"></div>
+    background:linear-gradient(135deg,#D8F3DC 0%,#B7E4C7 100%);">
+    <div id="heroBgImg" style="position:absolute;inset:-40px;background:url('Profile/2.jpg') center 60%/cover no-repeat;transform:scale(1.25) translateX(230px);"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(255,255,255,0.96) 0%,rgba(255,255,255,0.9) 38%,rgba(255,255,255,0.2) 55%,rgba(255,255,255,0.02) 72%,rgba(27,67,50,0.1) 100%);"></div>
   </div>
 
   <!-- Content -->
@@ -420,7 +427,7 @@
         Experience the power of Salveo Barley Grass for daily wellness — 100% pure, NASAA-certified organic from pristine Australian farms.
       </p>
       <div class="hero-btns" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;">
-        <a href="https://ph.shp.ee/JFk3CMsN" class="btn-shopee">
+        <a href="https://ph.shp.ee/2UgHZF5y" class="btn-shopee">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
           Buy on Shopee
         </a>
@@ -448,7 +455,7 @@
 
     <!-- RIGHT: Product visual -->
     <div class="hero-product" style="display:flex;justify-content:center;align-items:center;">
-      <div class="jar-wrap">
+      <div class="jar-wrap" style="margin-top:70px;">
         <!-- Glow -->
         <div style="position:absolute;inset:-60px;background:radial-gradient(circle,rgba(82,183,136,0.22) 0%,transparent 65%);pointer-events:none;z-index:0;"></div>
         <!-- Floating labels -->
@@ -457,7 +464,7 @@
         <div class="fl fl-3">HALAL Certified</div>
         <!-- Product image -->
         <img src="Products/Product_Hero.png" alt="Salveo Barley Grass"
-          style="width:100%;max-width:500px;display:block;position:relative;z-index:1;filter:drop-shadow(0 40px 60px rgba(27,67,50,0.35));">
+          style="width:100%;max-width:400px;display:block;position:relative;z-index:1;filter:drop-shadow(0 40px 60px rgba(27,67,50,0.35));">
       </div>
     </div>
   </div>
@@ -482,12 +489,12 @@
       <!-- Left: crossfading image panel -->
       <div id="revealLeft" style="position:relative;width:42%;max-width:460px;pointer-events:none;flex-shrink:0;">
         <div style="position:relative;border-radius:28px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 40px 80px rgba(27,67,50,0.22),0 8px 32px rgba(0,0,0,0.10);">
-          <img id="ri1" src="https://images.unsplash.com/photo-1500651780226-92db37d4ae4f?w=800&auto=format&fit=crop&q=80" alt="Australian barley farm"
-            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;">
-          <img id="ri2" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&auto=format&fit=crop&q=80" alt="Healthy green superfoods"
-            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;">
-          <img id="ri3" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&auto=format&fit=crop&q=80" alt="Wellness lifestyle"
-            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;">
+          <img id="ri1" src="Profile/3.jpg" alt="Salveo Well official store"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;opacity:0;">
+          <img id="ri2" src="Profile/5.jpg" alt="Salveo Barley Grass distributor holding product"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;opacity:0;">
+          <img id="ri3" src="Profile/7.jpg" alt="Salveo Well award night"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:0;">
           <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(27,67,50,0.15) 0%,transparent 55%);pointer-events:none;"></div>
         </div>
         <!-- Floating accent badge -->
@@ -641,7 +648,7 @@
     <!-- CTA row -->
     <div style="text-align:center;margin-top:56px;">
       <p style="color:#6B7280;font-size:0.9rem;margin-bottom:22px;">All products are 100% authentic. Order directly through our certified distributor.</p>
-      <a href="https://ph.shp.ee/JFk3CMsN" class="btn-shopee">
+      <a href="https://ph.shp.ee/2UgHZF5y" class="btn-shopee">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
         Order on Shopee
       </a>
@@ -664,7 +671,7 @@
     <!-- Benefit 1 -->
     <div class="ben-card ben-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:80px;" id="ben1">
       <div style="background:#F0FAF4;border-radius:24px;overflow:hidden;aspect-ratio:4/3;">
-        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&q=80&fit=crop" alt="Immune health" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#D8F3DC,#B7E4C7)'">
+        <img src="Profile/3.jpg" alt="Salveo Well official store" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;" onerror="this.parentElement.style.background='linear-gradient(135deg,#D8F3DC,#B7E4C7)'">
       </div>
       <div>
         <div style="width:52px;height:52px;background:#D8F3DC;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
@@ -695,14 +702,14 @@
         </div>
       </div>
       <div style="background:#F0FAF4;border-radius:24px;overflow:hidden;aspect-ratio:4/3;">
-        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&q=80&fit=crop" alt="Antioxidants greens" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        <img src="Profile/5.jpg" alt="Salveo Barley Grass distributor holding product" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;">
       </div>
     </div>
 
     <!-- Benefit 3 -->
     <div class="ben-card ben-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:80px;" id="ben3">
       <div style="background:#F0FAF4;border-radius:24px;overflow:hidden;aspect-ratio:4/3;">
-        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80&fit=crop" alt="Natural detox" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        <img src="Profile/1.jpg" alt="Salveo Well Let's Save Lives community drive" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;">
       </div>
       <div>
         <div style="width:52px;height:52px;background:#D8F3DC;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
@@ -733,14 +740,14 @@
         </div>
       </div>
       <div style="background:#F0FAF4;border-radius:24px;overflow:hidden;aspect-ratio:4/3;">
-        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80&fit=crop" alt="Vitamins minerals food" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        <img src="Profile/4.jpg" alt="Salveo Well Hong Kong event" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 12%;">
       </div>
     </div>
 
     <!-- Benefit 5 -->
     <div class="ben-card ben-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;" id="ben5">
       <div style="background:#F0FAF4;border-radius:24px;overflow:hidden;aspect-ratio:4/3;">
-        <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=800&q=80&fit=crop" alt="Energy vitality" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        <img src="Profile/7.jpg" alt="Salveo Well award night" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;">
       </div>
       <div>
         <div style="width:52px;height:52px;background:#D8F3DC;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
@@ -865,43 +872,124 @@
 <section id="testimonials" style="padding:100px 28px;background:#fff;">
   <div style="max-width:1200px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:60px;">
-      <span class="sec-label">Real Stories</span>
-      <h2 class="sec-h2">What Our Community Says</h2>
+      <span class="sec-label">Real People, Real Stories</span>
+      <h2 class="sec-h2">#KwentongSalveo</h2>
     </div>
     <div class="test-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;">
 
       <div class="test-card" style="background:#F9FAFB;border-radius:20px;padding:30px;border:1px solid #F0FAF4;">
-        <div style="display:flex;gap:3px;margin-bottom:18px;font-size:1rem;">⭐⭐⭐⭐⭐</div>
-        <p style="color:#374151;line-height:1.75;margin-bottom:22px;font-style:italic;font-size:0.95rem;">"I've been taking Salveo for 6 months and my energy levels have completely transformed. I no longer need coffee in the morning — I feel naturally energized all day!"</p>
+        <span style="display:inline-block;background:#FFEDD5;color:#C2410C;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:5px 13px;border-radius:100px;margin-bottom:16px;">Bukol sa Dibdib</span>
+        <p style="font-weight:700;color:#1B4332;font-size:1rem;margin-bottom:10px;line-height:1.4;">"Nawala yung mga bukol sa aking dibdib"</p>
+        <p style="color:#374151;line-height:1.7;margin-bottom:22px;font-size:0.9rem;">May mga maliliit na bukol sa aking dibdib na makirot at unti unti lumalaki. Pero nung simula kong inumin si SBG nawala yung aking mga nararamdaman at nung nagpacheck up ako ulit, wala na pong findings ang doktor.</p>
         <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:42px;height:42px;background:linear-gradient(135deg,#2D6A4F,#52B788);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">MA</div>
+          <div style="width:42px;height:42px;background:linear-gradient(135deg,#2D6A4F,#52B788);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">RD</div>
           <div>
-            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Maria Alcantara</div>
-            <div style="font-size:0.78rem;color:#9CA3AF;">Verified Buyer · Manila</div>
+            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Rovelyn De Lara</div>
+            <div style="font-size:0.78rem;color:#9CA3AF;">#KwentongSalveo</div>
           </div>
         </div>
       </div>
 
       <div class="test-card" style="background:#F9FAFB;border-radius:20px;padding:30px;border:1px solid #F0FAF4;">
-        <div style="display:flex;gap:3px;margin-bottom:18px;font-size:1rem;">⭐⭐⭐⭐⭐</div>
-        <p style="color:#374151;line-height:1.75;margin-bottom:22px;font-style:italic;font-size:0.95rem;">"My blood pressure and cholesterol have improved significantly since I started Salveo. My doctor was impressed. This has become non-negotiable in my daily routine."</p>
+        <span style="display:inline-block;background:#FFEDD5;color:#C2410C;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:5px 13px;border-radius:100px;margin-bottom:16px;">Bukol sa Matris</span>
+        <p style="font-weight:700;color:#1B4332;font-size:1rem;margin-bottom:10px;line-height:1.4;">"Lumiit ang bukol from 11cm ngayon 3cm nalang"</p>
+        <p style="color:#374151;line-height:1.7;margin-bottom:22px;font-size:0.9rem;">Nagpapasalamat po ako sa Salveo kasi from 11cm to 3cm napaliit po ng salveo yung measurement po ng polyps po and yung akin cysts.</p>
         <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:42px;height:42px;background:linear-gradient(135deg,#1B4332,#2D6A4F);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">RD</div>
+          <div style="width:42px;height:42px;background:linear-gradient(135deg,#1B4332,#2D6A4F);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">NC</div>
           <div>
-            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Roberto Dela Cruz</div>
-            <div style="font-size:0.78rem;color:#9CA3AF;">Verified Buyer · Cebu</div>
+            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Noeme Cabido</div>
+            <div style="font-size:0.78rem;color:#9CA3AF;">#KwentongSalveo</div>
           </div>
         </div>
       </div>
 
       <div class="test-card" style="background:#F9FAFB;border-radius:20px;padding:30px;border:1px solid #F0FAF4;">
-        <div style="display:flex;gap:3px;margin-bottom:18px;font-size:1rem;">⭐⭐⭐⭐⭐</div>
-        <p style="color:#374151;line-height:1.75;margin-bottom:22px;font-style:italic;font-size:0.95rem;">"As a busy mom of three, I barely had time to eat right. Salveo solved that. One scoop in the morning and I know my body is getting everything it needs. My skin has glowed too!"</p>
+        <span style="display:inline-block;background:#FFEDD5;color:#C2410C;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:5px 13px;border-radius:100px;margin-bottom:16px;">Aplastic Anemia</span>
+        <p style="font-weight:700;color:#1B4332;font-size:1rem;margin-bottom:10px;line-height:1.4;">"Yung hemoglobin niya 81g/L to 147g/L tumaas na!"</p>
+        <p style="color:#374151;line-height:1.7;margin-bottom:22px;font-size:0.9rem;">Unti unti ng tumataas ang CBC niya, hindi na niya need abonohan yung hemoglobin niya 81g/L to 147g/L na at normal narin platelet niya. Kaya laking tulong talaga ng salveo po saamin ni baby.</p>
         <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:42px;height:42px;background:linear-gradient(135deg,#52B788,#2D6A4F);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">JS</div>
+          <div style="width:42px;height:42px;background:linear-gradient(135deg,#52B788,#2D6A4F);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">AC</div>
           <div>
-            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Jennilyn Santos</div>
-            <div style="font-size:0.78rem;color:#9CA3AF;">Verified Buyer · Davao</div>
+            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Althia Marie Casas</div>
+            <div style="font-size:0.78rem;color:#9CA3AF;">#KwentongSalveo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card" style="background:#F9FAFB;border-radius:20px;padding:30px;border:1px solid #F0FAF4;">
+        <span style="display:inline-block;background:#FFEDD5;color:#C2410C;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:5px 13px;border-radius:100px;margin-bottom:16px;">Fatty Liver</span>
+        <p style="font-weight:700;color:#1B4332;font-size:1rem;margin-bottom:10px;line-height:1.4;">"After 2 months yung lab test ko sa liver function bumaba siya"</p>
+        <p style="color:#374151;line-height:1.7;margin-bottom:22px;font-size:0.9rem;">Effective nga! Totoo nga yung mga testimonies doon sa facebook, sa social media. After 2 months sabi ko, "Aba! parang wala na ako sakit ha." Nag pa lab test ulit at nag pa ultrasound ulit ako. Wala na!</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;background:linear-gradient(135deg,#2D6A4F,#52B788);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">RD</div>
+          <div>
+            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Rennel Dimla</div>
+            <div style="font-size:0.78rem;color:#9CA3AF;">#KwentongSalveo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card" style="background:#F9FAFB;border-radius:20px;padding:30px;border:1px solid #F0FAF4;">
+        <span style="display:inline-block;background:#FFEDD5;color:#C2410C;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:5px 13px;border-radius:100px;margin-bottom:16px;">Colds and Flu</span>
+        <p style="font-weight:700;color:#1B4332;font-size:1rem;margin-bottom:10px;line-height:1.4;">"SBG para sa mga babies and toddlers"</p>
+        <p style="color:#374151;line-height:1.7;margin-bottom:22px;font-size:0.9rem;">3 months palang si zary nung nagka sipon at ubo siya, sobrang worried ako. Sabi ko try ko muna syang I-Salveo dahil hindi naman advisable bigyan ng synthetic na gamot ang mga baby na ganun kabata. Kaya nag try ako ng half capsule muna ni SBG. Kinabukasan huminto agad yung runny nose niya.</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;background:linear-gradient(135deg,#1B4332,#2D6A4F);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">RY</div>
+          <div>
+            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Reach Yanes</div>
+            <div style="font-size:0.78rem;color:#9CA3AF;">#KwentongSalveo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card" style="background:#F9FAFB;border-radius:20px;padding:30px;border:1px solid #F0FAF4;">
+        <span style="display:inline-block;background:#FFEDD5;color:#C2410C;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:5px 13px;border-radius:100px;margin-bottom:16px;">Kidney Stone</span>
+        <p style="font-weight:700;color:#1B4332;font-size:1rem;margin-bottom:10px;line-height:1.4;">"After 1 month ng Salveo, 2.5cm na Kidney stone, nawala!"</p>
+        <p style="color:#374151;line-height:1.7;margin-bottom:22px;font-size:0.9rem;">After 1 month ng Salveo, 2.5cm na Kidney stone, nawala! Sobrang miracle ang Salveo. Gumaling po lahat ng aking sakit, lalo na sa aking kidney stones. Salamat Salveo!</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;background:linear-gradient(135deg,#52B788,#2D6A4F);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">SB</div>
+          <div>
+            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Shara Marie Betco</div>
+            <div style="font-size:0.78rem;color:#9CA3AF;">#KwentongSalveo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card" style="background:#F9FAFB;border-radius:20px;padding:30px;border:1px solid #F0FAF4;">
+        <span style="display:inline-block;background:#FFEDD5;color:#C2410C;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:5px 13px;border-radius:100px;margin-bottom:16px;">Bukol sa Leeg</span>
+        <p style="font-weight:700;color:#1B4332;font-size:1rem;margin-bottom:10px;line-height:1.4;">"Nagulat ako lumiit na yung bukol ko sa leeg"</p>
+        <p style="color:#374151;line-height:1.7;margin-bottom:22px;font-size:0.9rem;">Sa pag-inom ko ng Salveo, after 2 weeks, hala! nagulat ako lumiit na yung bukol ko sa leeg, Sobrang gaan sa pakiramdam at nakakapagtrabaho na ko ng maayos.</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;background:linear-gradient(135deg,#2D6A4F,#52B788);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">ME</div>
+          <div>
+            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Mary Jane Elardo</div>
+            <div style="font-size:0.78rem;color:#9CA3AF;">#KwentongSalveo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card" style="background:#F9FAFB;border-radius:20px;padding:30px;border:1px solid #F0FAF4;">
+        <span style="display:inline-block;background:#FFEDD5;color:#C2410C;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:5px 13px;border-radius:100px;margin-bottom:16px;">Stroke</span>
+        <p style="font-weight:700;color:#1B4332;font-size:1rem;margin-bottom:10px;line-height:1.4;">"Nang dahil kay Salveo, nawala yung barado sa puso ko!"</p>
+        <p style="color:#374151;line-height:1.7;margin-bottom:22px;font-size:0.9rem;">Apat na beses akong na-cardiac arrest. Nang dahil kay Salveo, nawala yung barado sa puso ko! Nung magpa-ECG ako, naging negative na yung bara sa aking puso!</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;background:linear-gradient(135deg,#1B4332,#2D6A4F);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">FB</div>
+          <div>
+            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Francisco Bondoc</div>
+            <div style="font-size:0.78rem;color:#9CA3AF;">#KwentongSalveo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card" style="background:#F9FAFB;border-radius:20px;padding:30px;border:1px solid #F0FAF4;">
+        <span style="display:inline-block;background:#FFEDD5;color:#C2410C;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:5px 13px;border-radius:100px;margin-bottom:16px;">Diabetes</span>
+        <p style="font-weight:700;color:#1B4332;font-size:1rem;margin-bottom:10px;line-height:1.4;">"From 170 yung blood sugar ko ngayon nasa 89 nalang"</p>
+        <p style="color:#374151;line-height:1.7;margin-bottom:22px;font-size:0.9rem;">From 170 yung blood sugar ko ngayon nasa 89 nalang, gawa ng Salveo. Simula nung nakilala ko si Salveo, sabi ko "Himala!" tuwang tuwa sakin yung Doctor normal na yung blood sugar ko at yung fatty liver ko.</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;background:linear-gradient(135deg,#52B788,#2D6A4F);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">SB</div>
+          <div>
+            <div style="font-weight:700;color:#1A1A1A;font-size:0.875rem;">Sonny Bautista</div>
+            <div style="font-size:0.78rem;color:#9CA3AF;">#KwentongSalveo</div>
           </div>
         </div>
       </div>
@@ -936,11 +1024,11 @@
         <p style="color:rgba(255,255,255,0.55);font-size:0.875rem;margin-bottom:18px;">📞 09355045029</p>
         <p style="color:rgba(255,255,255,0.78);line-height:1.75;margin-bottom:30px;font-size:0.95rem;">Order directly from our trusted distributor. Fast delivery, authentic products, and dedicated customer service. Your wellness journey starts here.</p>
         <div class="dist-btns" style="display:flex;gap:14px;flex-wrap:wrap;">
-          <a href="https://ph.shp.ee/JFk3CMsN" class="btn-shopee">
+          <a href="https://ph.shp.ee/2UgHZF5y" class="btn-shopee">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
             Buy on Shopee
           </a>
-          <a href="https://web.facebook.com/profile.php?id=61564299312503&rdid=J9yveFXbdVznVIe0&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F1DYYnHftKV%2F%3F_rdc%3D1%26_rdr#" class="btn-fb">
+          <a href="https://www.facebook.com/cabalquinto.riza" class="btn-fb">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
             Message on Facebook
           </a>
@@ -957,7 +1045,7 @@
   <div style="max-width:1200px;margin:0 auto;">
     <div class="foot-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px;">
       <div>
-        <div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:12px;">Salveo<span style="color:#52B788;">.</span></div>
+        <img src="logo-transparent.png" alt="Salveo Well" style="height:32px;width:auto;margin-bottom:16px;">
         <p style="color:rgba(255,255,255,0.55);line-height:1.75;max-width:270px;font-size:0.875rem;">Family's partner in Wellness. Australia's #1 Organic Barley Grass supplement — pure, natural, and life-changing.</p>
         <div style="display:flex;gap:12px;margin-top:22px;">
           <a href="#" style="width:38px;height:38px;background:rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background 0.2s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
@@ -999,7 +1087,7 @@
      STICKY BUY BUTTON
 ═══════════════════════════════════════════════════════════ -->
 <div id="stickyBuy">
-  <a href="https://ph.shp.ee/JFk3CMsN">
+  <a href="https://ph.shp.ee/2UgHZF5y">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
     Buy Now
   </a>
@@ -1009,7 +1097,7 @@
      FLOATING MESSENGER
 ═══════════════════════════════════════════════════════════ -->
 <div id="messenger">
-  <a href="https://web.facebook.com/profile.php?id=61564299312503&rdid=J9yveFXbdVznVIe0&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F1DYYnHftKV%2F%3F_rdc%3D1%26_rdr#" title="Message on Facebook Messenger">
+  <a href="https://www.facebook.com/cabalquinto.riza" title="Message on Facebook Messenger">
     <div class="msg-pulse"></div>
     <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17V22l2.86-1.57c.76.21 1.57.32 2.4.32 5.64 0 10-4.13 10-9.7C20.4 6.13 16.04 2 12 2zm1 13.06l-2.55-2.72L5.5 15.06l5.45-5.79 2.61 2.72 4.9-2.72-5.46 5.79z"/></svg>
   </a>
