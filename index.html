@@ -356,15 +356,16 @@
       #heroOverlay {
         background: linear-gradient(180deg,
           rgba(255,255,255,0.96) 0%,
-          rgba(255,255,255,0.95) 40%,
-          rgba(255,255,255,0.78) 48%,
-          rgba(255,255,255,0.28) 55%,
-          rgba(255,255,255,0) 63%,
+          rgba(255,255,255,0.95) 38%,
+          rgba(255,255,255,0.72) 45%,
+          rgba(255,255,255,0.2) 52%,
+          rgba(255,255,255,0) 58%,
           rgba(255,255,255,0) 92%,
           rgba(255,255,255,0.4) 100%) !important;
       }
-      /* translateY is capped by the scale: at s=1.12 anything past ~8% exposes a gap on top */
-      #heroBgImg { background-position: 44% center !important; transform: scale(1.12) translateY(8%) !important; }
+      /* Landscape source in a portrait frame: pick the slice around her (62%) and push the
+         whole thing down so her face clears the copy. Shift = scale x translateY. */
+      #heroBgImg { background-position: 62% center !important; transform: scale(1.28) translateY(14%) !important; }
     }
 
     /* Landscape tablets: wide but short, so a top scrim would cover her anyway.
@@ -379,7 +380,7 @@
           rgba(255,255,255,0.04) 68%,
           rgba(27,67,50,0.1) 100%) !important;
       }
-      #heroBgImg { background-position: 14% center !important; transform: scale(1.12) !important; }
+      #heroBgImg { background-position: 62% center !important; transform: scale(1.1) !important; }
     }
 
     /* Hero on phones: copy compacted at the top on a white scrim, photo left clear below.
@@ -391,14 +392,14 @@
         background: linear-gradient(180deg,
           rgba(255,255,255,0.97) 0%,
           rgba(255,255,255,0.95) 32%,
-          rgba(255,255,255,0.78) 41%,
-          rgba(255,255,255,0.28) 49%,
-          rgba(255,255,255,0) 58%,
+          rgba(255,255,255,0.76) 40%,
+          rgba(255,255,255,0.24) 47%,
+          rgba(255,255,255,0) 54%,
           rgba(255,255,255,0) 90%,
           rgba(255,255,255,0.45) 100%) !important;
       }
-      /* Drop her ~9% so her face lands below the copy instead of behind it */
-      #heroBgImg { background-position: 46% center !important; transform: scale(1.16) translateY(9%) !important; }
+      /* Drop her so her face lands below the copy instead of behind it */
+      #heroBgImg { background-position: 63% center !important; transform: scale(1.34) translateY(15%) !important; }
       /* Compact copy so the block ends around 42% of the viewport */
       .hero-h1 { font-size: 2.3rem !important; margin-bottom: 12px !important; }
       .hero-sub { font-size: 0.95rem !important; line-height: 1.6 !important; margin-bottom: 20px !important; max-width: 100% !important; }
@@ -424,15 +425,15 @@
       #heroOverlay {
         background: linear-gradient(180deg,
           rgba(255,255,255,0.97) 0%,
-          rgba(255,255,255,0.96) 44%,
-          rgba(255,255,255,0.82) 52%,
-          rgba(255,255,255,0.3) 59%,
-          rgba(255,255,255,0) 66%,
+          rgba(255,255,255,0.96) 40%,
+          rgba(255,255,255,0.8) 46%,
+          rgba(255,255,255,0.25) 52%,
+          rgba(255,255,255,0) 58%,
           rgba(255,255,255,0) 92%,
           rgba(255,255,255,0.45) 100%) !important;
       }
-      /* scale must stay >=1.32 here or the 16% shift exposes a gap above the photo */
-      #heroBgImg { transform: scale(1.34) translateY(16%) !important; }
+      /* scale must stay >=1.32 here or the shift exposes a gap above the photo */
+      #heroBgImg { background-position: 63% center !important; transform: scale(1.4) translateY(15%) !important; }
     }
 
     /* ── PRODUCT CARDS ─────────────────────────────────── */
@@ -491,8 +492,8 @@
   <!-- BG -->
   <div id="heroBg" style="position:absolute;inset:0;z-index:0;overflow:hidden;transform:scale(1.06);
     background:linear-gradient(135deg,#D8F3DC 0%,#B7E4C7 100%);">
-    <div id="heroBgImg" style="position:absolute;inset:-40px;background:url('Profile/hero1.png') center center/cover no-repeat;transform:scale(1.3) translateX(254px);"></div>
-    <div id="heroOverlay" style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(255,255,255,0.96) 0%,rgba(255,255,255,0.9) 38%,rgba(255,255,255,0.2) 55%,rgba(255,255,255,0.02) 72%,rgba(27,67,50,0.1) 100%);"></div>
+    <div id="heroBgImg" style="position:absolute;inset:-40px;background:url('Profile/final_hero.jpg') center center/cover no-repeat;transform:scale(1.18) translateX(110px);"></div>
+    <div id="heroOverlay" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.8) 0px,rgba(255,255,255,0.42) 62px,rgba(255,255,255,0) 132px),linear-gradient(100deg,rgba(255,255,255,0.97) 0%,rgba(255,255,255,0.93) 40%,rgba(255,255,255,0.32) 55%,rgba(255,255,255,0.03) 70%,rgba(27,67,50,0.1) 100%);"></div>
   </div>
 
   <!-- Content -->
